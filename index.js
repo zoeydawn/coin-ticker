@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 function coinTicker(exchange, pair) {
-  // let payload;
   switch (exchange) {
     case 'bitfinex':
       return axios.get('https://api.bitfinex.com/v1/pubticker/BTCUSD')
@@ -20,7 +19,7 @@ function coinTicker(exchange, pair) {
             pair: 'BTC/USD',
           };
         });
-        break;
+      break;
     case 'btce':
       return axios.get('https://btc-e.com/api/3/ticker/btc_usd')
         .then((res) => {
@@ -38,7 +37,7 @@ function coinTicker(exchange, pair) {
             pair: 'BTC/USD',
           };
         });
-        break;
+      break;
     case 'bitstamp':
       return axios.get('https://www.bitstamp.net/api/ticker_hour/')
         .then((res) => {
@@ -56,7 +55,7 @@ function coinTicker(exchange, pair) {
             pair: 'BTC/USD',
           };
         });
-        break;
+      break;
     case 'kraken':
       return axios.get('https://api.kraken.com/0/public/Ticker?pair=XXBTZUSD')
         .then((res) => {
@@ -74,32 +73,29 @@ function coinTicker(exchange, pair) {
             pair: 'BTC/USD',
           };
         });
-        break;
-        case 'okcoin':
-          return axios.get('https://www.okcoin.com/api/v1/ticker.do?symbol=btc_usd')
-            .then((res) => {
-              const { date, ticker } = res.data;
-              const { sell, buy, last, low, high, vol } = ticker;
-              // console.log('res.data:', res.data);
-              return {
-                last,
-                ask: buy,
-                bid: sell,
-                low,
-                high,
-                vol,
-                timestamp: date,
-                exchange: 'Okcoin',
-                pair: 'BTC/USD',
-              };
-            });
-          break;
+      break;
+    case 'okcoin':
+      return axios.get('https://www.okcoin.com/api/v1/ticker.do?symbol=btc_usd')
+        .then((res) => {
+          const { date, ticker } = res.data;
+          const { sell, buy, last, low, high, vol } = ticker;
+          // console.log('res.data:', res.data);
+          return {
+            last,
+            ask: buy,
+            bid: sell,
+            low,
+            high,
+            vol,
+            timestamp: date,
+            exchange: 'Okcoin',
+            pair: 'BTC/USD',
+          };
+        });
+      break;
     default:
       return "Unrecognized exchange"
   }
-  // return payload;
 }
-
-// console.log(coinTicker('bitfinex'));
 
 module.exports = coinTicker;
