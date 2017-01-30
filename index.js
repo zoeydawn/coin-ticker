@@ -94,6 +94,7 @@ function coinTicker(exchange, pair) {
         });
       break;
     default:
+      console.error(`Unrecognized exchange: "${exchange}"`)
       return "Unrecognized exchange"
   }
 }

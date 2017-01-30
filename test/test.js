@@ -66,16 +66,14 @@ describe('coinTicker', () => {
     })
   })
 
-  // it('Should throw error if given invalid arguments', () => {
-  //   expect(() => {
-  //     coinTicker('not an exchange');
-  //   }).to.throw();
-  // })
-  //
-  // it('Should throw error if given no arguments', () => {
-  //   expect(() => {
-  //     coinTicker();
-  //   }).to.throw();
-  // })
+  it('Should send error message if given invalid arguments', () => {
+    expect(coinTicker('not an exchange')).to.be.a('string');
+    expect(coinTicker('not an exchange')).to.equal('Unrecognized exchange');
+  })
+
+  it('Should send error message if given no arguments', () => {
+    expect(coinTicker()).to.be.a('string');
+    expect(coinTicker()).to.equal('Unrecognized exchange');
+  })
 
 })
