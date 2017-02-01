@@ -3,22 +3,7 @@ const axios = require('axios');
 function btcusd(exchange) {
   switch (exchange) {
     case 'bitfinex':
-      return axios.get('https://api.bitfinex.com/v1/pubticker/BTCUSD')
-        .then((res) => {
-          const { ask, bid, last_price, low, high, volume, timestamp } = res.data;
-          // console.log('res.data:', res.data);
-          return {
-            last: last_price,
-            ask,
-            bid,
-            low,
-            high,
-            vol: volume,
-            timestamp,
-            exchange: 'Bitfinex',
-            pair: 'BTC/USD',
-          };
-        });
+
       break;
     case 'btce':
       return axios.get('https://btc-e.com/api/3/ticker/btc_usd')
