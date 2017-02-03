@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 function okcoin(pair) {
-
-  return axios.get('https://www.okcoin.com/api/v1/ticker.do?symbol=btc_usd')
+  const currencyPair = pair === 'ltcusd' ? 'ltc_usd' : 'btc_usd';
+  return axios.get(`https://www.okcoin.com/api/v1/ticker.do?symbol=${currencyPair}`)
     .then((res) => {
       const { date, ticker } = res.data;
       const { sell, buy, last, low, high, vol } = ticker;
@@ -15,8 +15,8 @@ function okcoin(pair) {
         high,
         vol,
         timestamp: date,
-        exchange: 'Okcoin',
-        pair: 'BTC/USD',
+        exchange: 'okcoin',
+        pair: currencyPair.split('_').join(''),
       };
     });
 
