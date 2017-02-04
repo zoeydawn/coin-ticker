@@ -1,6 +1,7 @@
 {
   "name": "coin-ticker",
   "version": "1.0.0",
+  "_nodeVersion": "5.5.0",
   "description": "",
   "main": "index.js",
   "directories": {
