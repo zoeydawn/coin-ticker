@@ -26,6 +26,7 @@ coinTicker(exchange, currency-pair)
 
 **exchange:**
 A string declaring one of the available exchanges:
+
     * 'bitfinex'
     * 'bitstamp'
     * 'btce'
