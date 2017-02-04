@@ -23,7 +23,8 @@ coinTicker(exchange, currency-pair)
 ```
 
 **Parameters:**
-exchange:
+
+**exchange:**
 A string declaring one of the available exchanges:
   'bitfinex'
   'bitstamp'
@@ -114,15 +115,15 @@ Available asset pairs by exchange:
 
   An object containing the following values:
 
-    * last: *the last traded price*
-    * ask:  *current ask*
-    * bid: *current bid*
-    * low: *24 hour low*
-    * high: *24 hour high*
-    * vol: *24 hour volume*
-    * timestamp: *precise time*
-    * exchange: *the current exchange, i.e. 'bitfinex'*
-    * pair: *the asset pair, i.e. 'btcusd'*
+    * last: the last traded price
+    * ask:  current ask
+    * bid: current bid
+    * low: 24 hour low
+    * high: 24 hour high
+    * vol: 24 hour volume
+    * timestamp: precise time
+    * exchange: the current exchange, i.e. 'bitfinex'
+    * pair: the asset pair, i.e. 'btcusd'
 
 
 **Excamples:**
