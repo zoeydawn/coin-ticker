@@ -26,14 +26,14 @@ coinTicker(exchange, currency-pair)
 
 **exchange:**
 A string declaring one of the available exchanges:
-  'bitfinex'
-  'bitstamp'
-  'btce'
-  'kraken'
-  'okcoin'
+  * 'bitfinex'
+  * 'bitstamp'
+  * 'btce'
+  * 'kraken'
+  * 'okcoin'
 
 **currency-pair:**
-An optional string declaring the currencies or assets to retrieve. Default is btcusd.
+An optional string declaring the currencies or assets to retrieve. Default is 'btcusd'.
 
 Available asset pairs by exchange:
 
@@ -54,10 +54,10 @@ Available asset pairs by exchange:
 **Bitstamp:**
 
     * 'btcusd'
-    * 'btceur',
-    * 'eurusd',
-    * 'xrpusd',
-    * 'xrpeur',
+    * 'btceur'
+    * 'eurusd'
+    * 'xrpusd'
+    * 'xrpeur'
 
 **BTC-e:**
 
