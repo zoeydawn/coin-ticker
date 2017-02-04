@@ -153,13 +153,70 @@ describe('coinTicker', () => {
 
   it('Should return an object of Kraken BTC/USD data', () => {
     return coinTicker('kraken').then((data) => {
+      // console.log('data:', data);
       expect(data).to.be.an('object');
       expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
       expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('Kraken');
+      expect(data.exchange).to.equal('kraken');
+    })
+  })
+
+  it('Should return an object of Kraken ETH/USD data', () => {
+    return coinTicker('kraken', 'ethusd').then((data) => {
+      // console.log('data:', data);
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.low).to.be.a('string');
+      expect(data.high).to.be.a('string');
+      expect(data.vol).to.be.a('string');
+      expect(data.exchange).to.equal('kraken');
+      expect(data.pair).to.equal('ethusd');
+    })
+  })
+
+  it('Should return an object of Kraken ETC/BTC data', () => {
+    return coinTicker('kraken', 'etcbtc').then((data) => {
+      // console.log('data:', data);
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.low).to.be.a('string');
+      expect(data.high).to.be.a('string');
+      expect(data.vol).to.be.a('string');
+      expect(data.exchange).to.equal('kraken');
+      expect(data.pair).to.equal('etcbtc');
+    })
+  })
+
+  it('Should return an object of Kraken LTC/EUR data', () => {
+    return coinTicker('kraken', 'ltceur').then((data) => {
+      // console.log('data:', data);
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.low).to.be.a('string');
+      expect(data.high).to.be.a('string');
+      expect(data.vol).to.be.a('string');
+      expect(data.exchange).to.equal('kraken');
+      expect(data.pair).to.equal('ltceur');
+    })
+  })
+
+  it('Should return an object of Kraken BTC/JPY data', () => {
+    return coinTicker('kraken', 'btcjpy').then((data) => {
+      // console.log('data:', data);
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.low).to.be.a('string');
+      expect(data.high).to.be.a('string');
+      expect(data.vol).to.be.a('string');
+      expect(data.exchange).to.equal('kraken');
+      expect(data.pair).to.equal('btcjpy');
     })
   })
 
