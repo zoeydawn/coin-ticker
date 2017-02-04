@@ -1,8 +1,3 @@
 machine:
   node:
     version: 6.6.0
-
-test:
-  override:
-    - nvm install stable && alias default stable
-    - npm test
