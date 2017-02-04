@@ -11,7 +11,7 @@ $ npm install --save coin-ticker
 ```
 
 ## Usage
-Require:
+**Require:**
 ```js
 const coinTicker = require('coin-ticker');
 
@@ -33,82 +33,97 @@ A string declaring one of the available exchanges:
 
 **currency-pair:**
 An optional string declaring the currencies or assets to retrieve. Default is btcusd.
+
 Available asset pairs by exchange:
+
 **Bitfinex:**
-    'btcusd'
-    'ltcusd'
-    'ltcbtc'
-    'ethusd'
-    'ethbtc'
-    'etcbtc'
-    'etcusd'
-    'rrtusd'
-    'rrtbtc'
-    'zecusd'
-    'zecbtc'
+
+    * 'btcusd'
+    * 'ltcusd'
+    * 'ltcbtc'
+    * 'ethusd'
+    * 'ethbtc'
+    * 'etcbtc'
+    * 'etcusd'
+    * 'rrtusd'
+    * 'rrtbtc'
+    * 'zecusd'
+    * 'zecbtc'
+
 **Bitstamp:**
-    'btcusd'
-    'btceur',
-    'eurusd',
-    'xrpusd',
-    'xrpeur',
+
+    * 'btcusd'
+    * 'btceur',
+    * 'eurusd',
+    * 'xrpusd',
+    * 'xrpeur',
+
 **BTC-e:**
-    'btcusd'
-    'btcrur'
-    'btceur'
-    'ltcbtc'
-    'ltcusd'
-    'ltcrur'
-    'ltceur'
-    'nmcbtc'
-    'nmcusd'
-    'nvcbtc'
-    'nvcusd'
-    'usdrur'
-    'eurusd'
-    'eurrur'
-    'ppcbtc'
-    'ppcusd'
-    'dshbtc'
-    'dshusd'
-    'ethbtc'
-    'ethusd'
-    'etheur'
-    'ethltc'
-    'ethrur'
+
+    * 'btcusd'
+    * 'btcrur'
+    * 'btceur'
+    * 'ltcbtc'
+    * 'ltcusd'
+    * 'ltcrur'
+    * 'ltceur'
+    * 'nmcbtc'
+    * 'nmcusd'
+    * 'nvcbtc'
+    * 'nvcusd'
+    * 'usdrur'
+    * 'eurusd'
+    * 'eurrur'
+    * 'ppcbtc'
+    * 'ppcusd'
+    * 'dshbtc'
+    * 'dshusd'
+    * 'ethbtc'
+    * 'ethusd'
+    * 'etheur'
+    * 'ethltc'
+    * 'ethrur'
+
 **Kraken:**
-    'etcbtc'
-    'etceur'
-    'etcusd'
-    'ethbtc'
-    'ethcad'
-    'etheur'
-    'ethgbp'
-    'ethjpy'
-    'ethusd'
-    'ltcbtc'
-    'ltceur'
-    'ltcusd'
-    'btccad'
-    'btceur'
-    'btcgbp'
-    'btcjpy'
-    'btcusd'
+
+    * 'etcbtc'
+    * 'etceur'
+    * 'etcusd'
+    * 'ethbtc'
+    * 'ethcad'
+    * 'etheur'
+    * 'ethgbp'
+    * 'ethjpy'
+    * 'ethusd'
+    * 'ltcbtc'
+    * 'ltceur'
+    * 'ltcusd'
+    * 'btccad'
+    * 'btceur'
+    * 'btcgbp'
+    * 'btcjpy'
+    * 'btcusd'
+
 **Okcoin:**
-    'btcusd'
-    'ltcusd'
+
+    * 'btcusd'
+    * 'ltcusd'
+
 
 **Response Data:**
+
   An object containing the following values:
-    last: *the last traded price*
-    ask:  *current ask*
-    bid: *current bid*
-    low: *24 hour low*
-    high: *24 hour high*
-    vol: *24 hour volume*
-    timestamp: *precise time*
-    exchange: *the current exchange, i.e. 'bitfinex'*
-    pair: *the asset pair, i.e. 'btcusd'*
+
+    * last: *the last traded price*
+    * ask:  *current ask*
+    * bid: *current bid*
+    * low: *24 hour low*
+    * high: *24 hour high*
+    * vol: *24 hour volume*
+    * timestamp: *precise time*
+    * exchange: *the current exchange, i.e. 'bitfinex'*
+    * pair: *the asset pair, i.e. 'btcusd'*
+
 
 **Excamples:**
 
