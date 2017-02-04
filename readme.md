@@ -38,7 +38,6 @@ An optional string declaring the currencies or assets to retrieve. Default is 'b
 Available asset pairs by exchange:
 
 **Bitfinex:**
-
     * 'btcusd'
     * 'ltcusd'
     * 'ltcbtc'
@@ -52,7 +51,6 @@ Available asset pairs by exchange:
     * 'zecbtc'
 
 **Bitstamp:**
-
     * 'btcusd'
     * 'btceur'
     * 'eurusd'
@@ -60,7 +58,6 @@ Available asset pairs by exchange:
     * 'xrpeur'
 
 **BTC-e:**
-
     * 'btcusd'
     * 'btcrur'
     * 'btceur'
@@ -86,7 +83,6 @@ Available asset pairs by exchange:
     * 'ethrur'
 
 **Kraken:**
-
     * 'etcbtc'
     * 'etceur'
     * 'etcusd'
@@ -106,7 +102,6 @@ Available asset pairs by exchange:
     * 'btcusd'
 
 **Okcoin:**
-
     * 'btcusd'
     * 'ltcusd'
 
