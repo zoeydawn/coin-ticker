@@ -38,6 +38,7 @@ An optional string declaring the currencies or assets to retrieve. Default is 'b
 Available asset pairs by exchange:
 
 **Bitfinex:**
+
   * 'btcusd'
   * 'ltcusd'
   * 'ltcbtc'
@@ -51,6 +52,7 @@ Available asset pairs by exchange:
   * 'zecbtc'
 
 **Bitstamp:**
+
   * 'btcusd'
   * 'btceur'
   * 'eurusd'
@@ -58,6 +60,7 @@ Available asset pairs by exchange:
   * 'xrpeur'
 
 **BTC-e:**
+
   * 'btcusd'
   * 'btcrur'
   * 'btceur'
@@ -83,6 +86,7 @@ Available asset pairs by exchange:
   * 'ethrur'
 
 **Kraken:**
+
   * 'etcbtc'
   * 'etceur'
   * 'etcusd'
@@ -102,24 +106,28 @@ Available asset pairs by exchange:
   * 'btcusd'
 
 **Okcoin:**
-    * 'btcusd'
-    * 'ltcusd'
+
+  * 'btcusd'
+  * 'ltcusd'
 
 
 **Response Data:**
 
   An object containing the following values:
 
-    * last: the last traded price
-    * ask:  current ask
-    * bid: current bid
-    * low: 24 hour low
-    * high: 24 hour high
-    * vol: 24 hour volume
-    * timestamp: precise time
-    * exchange: the current exchange, i.e. 'bitfinex'
-    * pair: the asset pair, i.e. 'btcusd'
-
+```js
+{
+  last: // the last traded price
+  ask:  // current ask
+  bid: // current bid
+  low: // 24 hour low
+  high: // 24 hour high
+  vol: // 24 hour volume
+  timestamp: // precise time
+  exchange: // the current exchange, i.e. 'bitfinex'
+  pair: // the asset pair, i.e. 'btcusd'
+}
+```
 
 **Excamples:**
 
