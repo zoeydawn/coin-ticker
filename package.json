@@ -6,6 +6,10 @@
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donbobvanbirt/coin-ticker"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test"
   },
