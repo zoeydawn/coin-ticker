@@ -1,8 +1,8 @@
 # coin-ticker
 
-[![CircleCI](https://circleci.com/gh/donbobvanbirt/coin-ticker.svg?style=svg)](https://circleci.com/gh/donbobvanbirt/coin-ticker)
-
 Easily get the latest exchange data of Bitcoin, Etherium, Litecoin, and other assets from a variety of exchanges including Bitfinex, Bitstamp, Kraken, and others.
+
+[![CircleCI](https://circleci.com/gh/donbobvanbirt/coin-ticker.svg?style=svg)](https://circleci.com/gh/donbobvanbirt/coin-ticker)
 
 ## Install
 
@@ -124,7 +124,7 @@ Available asset pairs by exchange:
   low: // 24 hour low
   high: // 24 hour high
   vol: // 24 hour volume
-  timestamp: // precise time
+  timestamp: // precise time (not available on Kraken)
   exchange: // the current exchange, i.e. 'bitfinex'
   pair: // the asset pair, i.e. 'btcusd'
 }
