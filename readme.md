@@ -32,6 +32,7 @@ A string declaring one of the available exchanges:
     * 'btce'
     * 'kraken'
     * 'okcoin'
+    * 'exmo'
 
 **currency-pair:**
 An optional string declaring the currencies or assets to retrieve. Default is 'btcusd'.
@@ -110,6 +111,22 @@ Available asset pairs by exchange:
 
     * 'btcusd'
     * 'ltcusd'
+
+
+**Exmo:**
+
+    * 'btcusd'
+    * 'btceur'
+    * 'btcrub'
+    * 'btcuah'
+    * 'dashbtc'
+    * 'dashusd'
+    * 'ethbtc'
+    * 'ethusd'
+    * 'ethrub'
+    * 'dogebtc'
+    * 'ltcbtc'
+    * 'ltcrub'
 
 
 **Response Data:**
