@@ -29,6 +29,7 @@ A string declaring one of the available exchanges:
 
     * 'bitfinex'
     * 'bitstamp'
+    * 'poloniex'
     * 'btce'
     * 'kraken'
     * 'okcoin'
@@ -60,6 +61,39 @@ Available asset pairs by exchange:
     * 'eurusd'
     * 'xrpusd'
     * 'xrpeur'
+
+**Poloniex:**
+
+    * 'btcusd'
+    * 'ethbtc'
+    * 'xrpbtc'
+    * 'dashbtc'
+    * 'ethusd'
+    * 'xmrbtc'
+    * 'etcbtc'
+    * 'fctbtc'
+    * 'zecbtc'
+    * 'ltcbtc'
+    * 'dashusd'
+    * 'gntbtc'
+    * 'xrpusd'
+    * 'dcrbtc'
+    * 'repbtc'
+    * 'maidbtc'
+    * 'lskbtc'
+    * 'xmrusd'
+    * 'dogebtc'
+    * 'ampbtc'
+    * 'xembtc'
+    * 'sjcxbtc'
+    * 'etcusd'
+    * 'steembtc'
+    * 'etceth'
+    * 'navbtc'
+    * 'sysbtc'
+    * 'gnteth'
+    * 'zecusd'
+    * 'ltcusd'
 
 **BTC-e:**
 
@@ -141,7 +175,7 @@ Available asset pairs by exchange:
   low: // 24 hour low
   high: // 24 hour high
   vol: // 24 hour volume
-  timestamp: // precise time (not available on Kraken)
+  timestamp: // precise time
   exchange: // the current exchange, i.e. 'bitfinex'
   pair: // the asset pair, i.e. 'btcusd'
 }
