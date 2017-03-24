@@ -319,6 +319,59 @@ describe('coinTicker', () => {
     });
   });
 
+  describe('Poloniex exchange', () => {
+    const availablePairs = [
+      'btcusd',
+      'ethbtc',
+      'xrpbtc',
+      'dashbtc',
+      'ethusd',
+      'xmrbtc',
+      'etcbtc',
+      'fctbtc',
+      'zecbtc',
+      'ltcbtc',
+      'dashusd',
+      'gntbtc',
+      'xrpusd',
+      'dcrbtc',
+      'repbtc',
+      'maidbtc',
+      'lskbtc',
+      'xmrusd',
+      'dogebtc',
+      'ampbtc',
+      'xembtc',
+      'sjcxbtc',
+      'etcusd',
+      'steembtc',
+      'etceth',
+      'navbtc',
+      'sysbtc',
+      'gnteth',
+      'zecusd',
+      'ltcusd',
+    ];
+
+    availablePairs.forEach(pair => {
+      it(`Should return an object of Poloniex ${pair} data`, done => {
+        coinTicker('poloniex', pair)
+          .then(data => {
+            expect(data).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.last).to.be.a('string');
+            expect(data.low).to.be.a('string');
+            expect(data.high).to.be.a('string');
+            expect(data.vol).to.be.a('string');
+            expect(data.exchange).to.equal('poloniex');
+            expect(data.pair).to.equal(pair);
+          })
+          .then(done)
+          .catch(err => done(err));
+      });
+    });
+  });
+
   it('Should send error message if given invalid arguments', () => {
     expect(coinTicker('not an exchange')).to.be.a('string');
     expect(coinTicker('not an exchange')).to.equal('Unrecognized exchange');

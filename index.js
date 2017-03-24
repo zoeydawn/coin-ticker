@@ -4,6 +4,7 @@ const bitstamp = require('./exchanges/bitstamp');
 const kraken = require('./exchanges/kraken');
 const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
+const poloniex = require('./exchanges/poloniex');
 
 function coinTicker(exchange, pair) {
   switch (exchange) {
@@ -19,11 +20,15 @@ function coinTicker(exchange, pair) {
     case 'kraken':
       return kraken(pair);
       break;
+    case 'poloniex':
+      return poloniex(pair);
+      break;
     case 'okcoin':
       return okcoin(pair);
       break;
     case 'exmo':
       return exmo(pair);
+      break;
     default:
       console.error(`Unrecognized exchange: "${exchange}"`);
       return 'Unrecognized exchange';
