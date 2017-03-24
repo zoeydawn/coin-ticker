@@ -34,7 +34,7 @@ function kraken(pair) {
         vol: v[1],
         low: l[1],
         high: h[1],
-        timestamp: null,
+        timestamp: Date.now() / 1000,
         exchange: 'kraken',
         pair: currencyPair,
       };
