@@ -4,6 +4,50 @@ const { expect } = chai;
 const coinTicker = require('../index.js');
 
 describe('coinTicker', () => {
+
+  // Coinbase
+  it('Should return an object of Coinbase BTC/USD data', done => {
+    var objectdata = coinTicker('coinbase', 'BTC-USD').then(data => {
+      //console.log('data: ', data); 
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'currency', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase ETH/USD data', done => {
+    coinTicker('coinbase', 'ETH-USD').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'currency', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase BTC/EUR data', done => {
+    coinTicker('coinbase', 'BTC-EUR').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'currency', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase ETH/USD data', done => {
+    coinTicker('coinbase', 'ETH-USD').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'currency', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      done();
+    });
+  });
+
+
   it('Should return an object of Bitfinex BTC/USD data', done => {
     coinTicker('bitfinex').then(data => {
       expect(data).to.be.an('object');
@@ -382,3 +426,4 @@ describe('coinTicker', () => {
     expect(coinTicker()).to.equal('Unrecognized exchange');
   });
 });
+

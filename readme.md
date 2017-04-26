@@ -1,6 +1,11 @@
-# coin-ticker
+# coin-ticker-jlp
+
+This is my first Javascript library so a sort of learning exercise for now
+
+## Below is original readme from coin-ticker unmodified
 
 Easily get the latest exchange data of Bitcoin, Etherium, Litecoin, and other assets from a variety of exchanges including Bitfinex, Bitstamp, Kraken, Poloniex and others.
+
 
 [![CircleCI](https://circleci.com/gh/donbobvanbirt/coin-ticker.svg?style=svg)](https://circleci.com/gh/donbobvanbirt/coin-ticker)
 
@@ -13,12 +18,14 @@ $ npm install --save coin-ticker
 ## Usage
 **Require:**
 ```js
+TODO: will change
 const coinTicker = require('coin-ticker');
 
 ```
 
 **Syntax:**
 ```js
+TODO: will change
 coinTicker(exchange, currency-pair)
 ```
 
@@ -181,7 +188,7 @@ Available asset pairs by exchange:
 }
 ```
 
-**Excamples:**
+**Examples:**
 
 Get the current ticker data of ETH/USD from BTC-e:
 ```js
