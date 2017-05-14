@@ -5,6 +5,7 @@ const kraken = require('./exchanges/kraken');
 const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
 const poloniex = require('./exchanges/poloniex');
+const coinbase = require('./exchanges/coinbase');
 
 function coinTicker(exchange, pair) {
   switch (exchange) {
@@ -22,6 +23,9 @@ function coinTicker(exchange, pair) {
       break;
     case 'poloniex':
       return poloniex(pair);
+      break;
+    case 'coinbase':
+      return coinbase(pair);
       break;
     case 'okcoin':
       return okcoin(pair);

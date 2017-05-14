@@ -30,6 +30,7 @@ A string declaring one of the available exchanges:
 
     * 'bitfinex'
     * 'bitstamp'
+    * 'coinbase'
     * 'poloniex'
     * 'btce'
     * 'kraken'
@@ -62,6 +63,13 @@ Available asset pairs by exchange:
     * 'eurusd'
     * 'xrpusd'
     * 'xrpeur'
+
+**Coinbase:**
+
+    * 'btcusd'
+    * 'btceur'
+    * 'ethusd'
+    * 'etheur'
 
 **Poloniex:**
 
@@ -184,11 +192,11 @@ Available asset pairs by exchange:
 
 **Excample:**
 ```js
-coinTicker('btce'[, 'btcusd']) // when no asset pair is specified, coinTicker will default to 'btcusd'
+coinTicker('bitfinex'[, 'btcusd']) // when no asset pair is specified, coinTicker will default to 'btcusd'
    .then( tick => {
       console.log(tick)
    })
-// => 
+// =>
 // {
 //   last: '1034.8',
 //   ask: '1034.8',

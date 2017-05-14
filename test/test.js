@@ -45,6 +45,50 @@ describe('coinTicker', () => {
     });
   });
 
+  it('Should return an object of Coinbase BTC/USD data', done => {
+    coinTicker('coinbase', 'btcusd').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      expect(data.pair).to.equal('btcusd');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase ETH/USD data', done => {
+    coinTicker('coinbase', 'ethusd').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      expect(data.pair).to.equal('ethusd');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase BTC/EUR data', done => {
+    coinTicker('coinbase', 'btceur').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      expect(data.pair).to.equal('btceur');
+      done();
+    });
+  });
+
+  it('Should return an object of Coinbase ETH/EUR data', done => {
+    coinTicker('coinbase', 'etheur').then(data => {
+      expect(data).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.last).to.be.a('string');
+      expect(data.exchange).to.equal('coinbase');
+      expect(data.pair).to.equal('etheur');
+      done();
+    });
+  });
+
   it('Should return an object of BTC-e BTC/USD data', done => {
     coinTicker('btce').then(data => {
       expect(data).to.be.an('object');
