@@ -14,6 +14,7 @@ $ npm install --save coin-ticker
 **Require:**
 ```js
 const coinTicker = require('coin-ticker');
+// => Promise
 
 ```
 
@@ -181,29 +182,22 @@ Available asset pairs by exchange:
 }
 ```
 
-**Excamples:**
-
-Get the current ticker data of ETH/USD from BTC-e:
+**Excample:**
 ```js
-coinTicker('btce', 'ethusd');
-```
-
-Get the current ticker data of BTC/USD from Bitfinex:
-```js
-coinTicker('bitfinex'); // when no asset pair is specified, coinTicker will default to 'btcusd'
-```
-
-Example response data:
-```js
-{
-  last: '1034.8',
-  ask: '1034.8',
-  bid: '1034.7',
-  low: '1001.6',
-  high: '1040.0',
-  vol: '15112.8733725',
-  timestamp: '1486238356.227418953',
-  exchange: 'bitfinex',
-  pair: 'btcusd'
-}
+coinTicker('btce'[, 'btcusd']) // when no asset pair is specified, coinTicker will default to 'btcusd'
+   .then( tick => {
+      console.log(tick)
+   })
+// => 
+// {
+//   last: '1034.8',
+//   ask: '1034.8',
+//   bid: '1034.7',
+//   low: '1001.6',
+//   high: '1040.0',
+//   vol: '15112.8733725',
+//   timestamp: '1486238356.227418953',
+//   exchange: 'bitfinex',
+//   pair: 'btcusd'
+// }
 ```
