@@ -37,6 +37,7 @@ function kraken(pair) {
         timestamp: Date.now() / 1000,
         exchange: 'kraken',
         pair: currencyPair,
+        rawData: res.data.result[specifiedPair],
       };
     });
 

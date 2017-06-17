@@ -29,6 +29,7 @@ function bitfinex(pair) {
         timestamp,
         exchange: 'bitfinex',
         pair: currencyPair,
+        rawData: res.data,
       };
     });
 

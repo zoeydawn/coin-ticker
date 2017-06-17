@@ -216,6 +216,7 @@ function bittrex(pair) {
         timestamp: Date.now() / 1000,
         exchange: 'bittrex',
         pair: currencyPair,
+        rawData: res.data.result[0],
       };
     });
 }

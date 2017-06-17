@@ -7,7 +7,8 @@ describe('coinTicker', () => {
   it('Should return an object of Bitfinex BTC/USD data', done => {
     coinTicker('bitfinex').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -20,7 +21,8 @@ describe('coinTicker', () => {
   it('Should return an object of Bitfinex LTC/USD data', done => {
     coinTicker('bitfinex', 'ltcusd').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -34,7 +36,8 @@ describe('coinTicker', () => {
   it('Should return an object of Bitfinex ETH/BTC data', done => {
     coinTicker('bitfinex', 'ethusd').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -48,7 +51,8 @@ describe('coinTicker', () => {
   it('Should return an object of Coinbase BTC/USD data', done => {
     coinTicker('coinbase', 'btcusd').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.exchange).to.equal('coinbase');
       expect(data.pair).to.equal('btcusd');
@@ -59,7 +63,8 @@ describe('coinTicker', () => {
   it('Should return an object of Coinbase ETH/USD data', done => {
     coinTicker('coinbase', 'ethusd').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.exchange).to.equal('coinbase');
       expect(data.pair).to.equal('ethusd');
@@ -70,7 +75,8 @@ describe('coinTicker', () => {
   it('Should return an object of Coinbase BTC/EUR data', done => {
     coinTicker('coinbase', 'btceur').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.exchange).to.equal('coinbase');
       expect(data.pair).to.equal('btceur');
@@ -81,7 +87,8 @@ describe('coinTicker', () => {
   it('Should return an object of Coinbase ETH/EUR data', done => {
     coinTicker('coinbase', 'etheur').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.exchange).to.equal('coinbase');
       expect(data.pair).to.equal('etheur');
@@ -92,7 +99,8 @@ describe('coinTicker', () => {
   it('Should return an object of BTC-e BTC/USD data', done => {
     coinTicker('btce').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -106,7 +114,8 @@ describe('coinTicker', () => {
     coinTicker('btce', 'ltcbtc').then(data => {
       // console.log('data:', data);
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -121,7 +130,8 @@ describe('coinTicker', () => {
     coinTicker('btce', 'dshusd').then(data => {
       // console.log('data:', data);
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -136,7 +146,8 @@ describe('coinTicker', () => {
     coinTicker('btce', 'ethltc').then(data => {
       // console.log('data:', data);
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -150,7 +161,8 @@ describe('coinTicker', () => {
   it('Should return an object of Bitstamp BTC/USD data', done => {
     coinTicker('bitstamp').then(data => {
       expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+      expect(data.rawData).to.be.an('object');
+      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
       expect(data.last).to.be.a('string');
       expect(data.low).to.be.a('string');
       expect(data.high).to.be.a('string');
@@ -165,7 +177,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -182,7 +195,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -199,7 +213,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -216,7 +231,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -232,7 +248,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -249,7 +266,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -266,7 +284,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -283,7 +302,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -300,7 +320,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -316,7 +337,8 @@ describe('coinTicker', () => {
       .then(data => {
         // console.log('data:', data);
         expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+        expect(data.rawData).to.be.an('object');
+        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
         expect(data.last).to.be.a('string');
         expect(data.low).to.be.a('string');
         expect(data.high).to.be.a('string');
@@ -349,7 +371,8 @@ describe('coinTicker', () => {
         coinTicker('exmo', pair)
           .then(data => {
             expect(data).to.be.an('object');
-            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.rawData).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
             expect(data.last).to.be.a('string');
             expect(data.low).to.be.a('string');
             expect(data.high).to.be.a('string');
@@ -396,7 +419,8 @@ describe('coinTicker', () => {
         coinTicker('bittrex', pair)
           .then(data => {
             expect(data).to.be.an('object');
-            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.rawData).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
             expect(data.last).to.be.a('string');
             expect(data.low).to.be.a('string');
             expect(data.high).to.be.a('string');
@@ -448,7 +472,8 @@ describe('coinTicker', () => {
         coinTicker('poloniex', pair)
           .then(data => {
             expect(data).to.be.an('object');
-            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.rawData).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
             expect(data.last).to.be.a('string');
             expect(data.low).to.be.a('string');
             expect(data.high).to.be.a('string');

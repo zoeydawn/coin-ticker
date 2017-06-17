@@ -53,6 +53,7 @@ function poloniex(pair) {
         timestamp: Date.now() / 1000,
         exchange: 'poloniex',
         pair: currencyPair,
+        rawData: res.data[specifiedPair],
       };
     });
 }

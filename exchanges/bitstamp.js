@@ -23,6 +23,7 @@ function bitstamp(pair) {
         timestamp,
         exchange: 'bitstamp',
         pair: currencyPair,
+        rawData: res.data,
       };
     });
 

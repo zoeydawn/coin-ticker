@@ -43,6 +43,7 @@ function btce(pair) {
         timestamp: updated.toString(),
         exchange: 'btce',
         pair: currencyPair.split('_').join(''),
+        rawData: res.data[currencyPair],
       };
     });
 

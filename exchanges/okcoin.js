@@ -17,6 +17,7 @@ function okcoin(pair) {
         timestamp: date,
         exchange: 'okcoin',
         pair: currencyPair.split('_').join(''),
+        rawData: res.data,
       };
     });
 

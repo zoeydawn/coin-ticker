@@ -36,9 +36,9 @@ function coinbase(pair) {
         timestamp: Date.now() / 1000,
         exchange: 'coinbase',
         pair: currencyPair.toLowerCase().split('-').join(''),
+        rawData: { spot, buy, sell },
       };
     });
-
 }
 
 module.exports = coinbase;

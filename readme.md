@@ -187,6 +187,7 @@ Available asset pairs by exchange:
   timestamp: // precise time
   exchange: // the current exchange, i.e. 'bitfinex'
   pair: // the asset pair, i.e. 'btcusd'
+  rawData: // the original data received from the exchange api. Differs by exchange.
 }
 ```
 
@@ -206,6 +207,7 @@ coinTicker('bitfinex'[, 'btcusd']) // when no asset pair is specified, coinTicke
 //   vol: '15112.8733725',
 //   timestamp: '1486238356.227418953',
 //   exchange: 'bitfinex',
-//   pair: 'btcusd'
+//   pair: 'btcusd',
+//   rawData: { ... }
 // }
 ```

@@ -35,6 +35,7 @@ function exmo(pair) {
       timestamp: updated,
       exchange: 'exmo',
       pair: currencyPair,
+      rawData: data,
     };
   });
 }
