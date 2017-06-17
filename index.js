@@ -1,6 +1,7 @@
 const bitfinex = require('./exchanges/bitfinex');
 const btce = require('./exchanges/btce');
 const bitstamp = require('./exchanges/bitstamp');
+const bittrex = require('./exchanges/bittrex');
 const kraken = require('./exchanges/kraken');
 const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
@@ -17,6 +18,9 @@ function coinTicker(exchange, pair) {
       break;
     case 'bitstamp':
       return bitstamp(pair);
+      break;
+    case 'bittrex':
+      return bittrex(pair);
       break;
     case 'kraken':
       return kraken(pair);
