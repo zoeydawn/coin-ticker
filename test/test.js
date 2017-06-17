@@ -363,6 +363,52 @@ describe('coinTicker', () => {
     });
   });
 
+  describe('Bittrex exchange', () => {
+    const availablePairs = [
+      'btcusd',
+      'ethbtc',
+      'xrpbtc',
+      'dashbtc',
+      'ethusd',
+      'xmrbtc',
+      'etcbtc',
+      'fctbtc',
+      'zecbtc',
+      'ltcbtc',
+      'gntbtc',
+      'dcrbtc',
+      'repbtc',
+      'maidbtc',
+      'lskbtc',
+      'dogebtc',
+      'ampbtc',
+      'xembtc',
+      'sjcxbtc',
+      'steembtc',
+      'etceth',
+      'navbtc',
+      'sysbtc',
+      'gnteth',
+    ];
+
+    availablePairs.forEach(pair => {
+      it(`Should return an object of Bittrex ${pair} data`, done => {
+        coinTicker('bittrex', pair)
+          .then(data => {
+            expect(data).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.last).to.be.a('string');
+            expect(data.low).to.be.a('string');
+            expect(data.high).to.be.a('string');
+            expect(data.vol).to.be.a('string');
+            expect(data.exchange).to.equal('bittrex');
+            expect(data.pair).to.equal(pair);
+          })
+          .then(done)
+          .catch(err => done(err));
+      });
+    });
+  });
   describe('Poloniex exchange', () => {
     const availablePairs = [
       'btcusd',
