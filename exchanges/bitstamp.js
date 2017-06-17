@@ -5,7 +5,6 @@ module.exports = (pair) => {
   return axios.get(`https://www.bitstamp.net/api/v2/ticker/${currencyPair}`)
     .then((res) => {
       const { bid, ask, last, low, high, volume, timestamp } = res.data
-
       return {
         last,
         ask,
@@ -18,6 +17,9 @@ module.exports = (pair) => {
         pair,
         rawData: res.data,
       };
+    })
+    .catch((err) => {
+      return 'invalid currency pair';
     });
 
 }

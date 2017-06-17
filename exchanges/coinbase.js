@@ -9,8 +9,10 @@ function coinbase(pair) {
   let sell;
 
   return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/spot`, { headers: {'CB-VERSION': VERSION_DATE}})
-
     .then((spotRes) => {
+      if (spotRes.data.errors) {
+        error = spotRes.data.errors.id;
+      }
       spot = spotRes.data.data;
       return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/buy`, { headers: {'CB-VERSION': VERSION_DATE}})
 
@@ -35,6 +37,9 @@ function coinbase(pair) {
 
         rawData: { spot, buy, sell },
       };
+    })
+    .catch((err) => {
+      return 'invalid currency pair';
     });
 }
 

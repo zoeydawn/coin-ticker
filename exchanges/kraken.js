@@ -10,6 +10,9 @@ module.exports = (pair) => {
 
   return axios.get(`https://api.kraken.com/0/public/Ticker?pair=${currencyPair}`)
     .then((res) => {
+      if (res.data.error) {
+        return 'invalid currency pair';
+      }
       const data = res.data.result
       const { a, b, c, v, l, h } = data[Object.keys(data)[0]];
       return {
@@ -24,6 +27,6 @@ module.exports = (pair) => {
         pair,
         rawData: data,
       };
-    });
-
+    })
+    .catch(err => console.error('kraken api error:', error));
 }

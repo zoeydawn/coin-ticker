@@ -8,6 +8,9 @@ module.exports = (currencyPair) => {
   const pair = asset1 + '_' + asset2;
   return axios.get('https://poloniex.com/public?command=returnTicker')
     .then((res) => {
+      if (!res.data[pair]) {
+        return 'invalid currency pair';
+      }
       const { last, lowestAsk, highestBid, percentChange, baseVolume, high24hr, low24hr } = res.data[pair];
       return {
         last,

@@ -11,6 +11,9 @@ module.exports = (pair) => {
   }
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {
+      if (res.data.message === 'INVALID_MARKET') {
+        return 'invalid currency pair';
+      }
       const { Last, Ask, Bid, Volume, High, Low } = res.data.result[0];
       return {
         last: Last.toString(),
@@ -24,5 +27,6 @@ module.exports = (pair) => {
         pair,
         rawData: res.data.result[0],
       };
-    });
+    })
+    .catch(err => console.error('bittrex api error:', error));
 }
