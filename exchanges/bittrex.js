@@ -1,9 +1,20 @@
 const axios = require('axios');
 
 module.exports = (pair) => {
-  const currencyPair = pair.replace('_', '-')
+  const pairArr = pair.split('_');
+  const asset1 = pairArr[1] === 'USD' ? 'USDT' : pairArr[1];
+  const asset2 = pairArr[0] === 'USD' ? 'USDT' : pairArr[0];
+
+  let currencyPair = `${asset1}-${asset2}`;
+  if (currencyPair === 'BTC-USDT') {
+    currencyPair = 'USDT-BTC'
+  }
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {
+      if (!res.data.success) {
+        console.log('currencyPair:', currencyPair);
+        console.log('res.data:', res.data);
+      }
       const { Last, Ask, Bid, Volume, High, Low } = res.data.result[0];
       return {
         last: Last.toString(),
