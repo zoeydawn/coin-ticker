@@ -26,12 +26,12 @@ function coinbase(pair) {
         last: spot.amount,
         ask: buy.amount,
         bid: sell.amount,
-        low: null,
-        high: null,
-        vol: null,
+        low: 'not provided',
+        high: 'not provided',
+        vol: 'not provided',
         timestamp: Date.now() / 1000,
         exchange: 'coinbase',
-        pair: currencyPair.toLowerCase().split('-').join(''),
+        pair: pair,
 
         rawData: { spot, buy, sell },
       };

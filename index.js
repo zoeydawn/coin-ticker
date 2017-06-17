@@ -25,14 +25,12 @@ module.exports = (exchange, currencyPair) => {
       return bitstamp(pair)
       break
     case 'bittrex':
-      pair = pair === 'BTC_USD' ? 'USDT_BTC' : pair
       return bittrex(pair)
       break
     case 'kraken':
       return kraken(pair)
       break
     case 'poloniex':
-      console.log('in switch');
       return poloniex(pair);
       break;
     case 'coinbase':

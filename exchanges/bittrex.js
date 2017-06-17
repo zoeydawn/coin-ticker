@@ -11,10 +11,6 @@ module.exports = (pair) => {
   }
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {
-      if (!res.data.success) {
-        console.log('currencyPair:', currencyPair);
-        console.log('res.data:', res.data);
-      }
       const { Last, Ask, Bid, Volume, High, Low } = res.data.result[0];
       return {
         last: Last.toString(),
