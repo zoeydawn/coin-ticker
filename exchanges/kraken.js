@@ -13,7 +13,7 @@ module.exports = (pair) => {
       if (res.data.error && res.data.error[0] === 'EQuery:Unknown asset pair') {
         return 'invalid currency pair';
       }
-      const data = res.data.result
+      const data = res.data.result;
       const { a, b, c, v, l, h } = data[Object.keys(data)[0]];
       return {
         ask: a[0],

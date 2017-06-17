@@ -16,34 +16,34 @@ module.exports = (exchange, currencyPair) => {
 
   switch (exchange) {
     case 'bitfinex':
-      return bitfinex(pair)
-      break
+      return bitfinex(pair);
+      break;
     case 'btce':
-      return btce(pair)
-      break
+      return btce(pair);
+      break;
     case 'bitstamp':
-      return bitstamp(pair)
-      break
+      return bitstamp(pair);
+      break;
     case 'bittrex':
-      return bittrex(pair)
-      break
+      return bittrex(pair);
+      break;
     case 'kraken':
-      return kraken(pair)
-      break
+      return kraken(pair);
+      break;
     case 'poloniex':
-      return poloniex(pair);
-      break;
+      return poloniex(pair);;
+      break;;
     case 'coinbase':
-      return coinbase(pair);
-      break;
+      return coinbase(pair);;
+      break;;
     case 'okcoin':
-      return okcoin(pair)
-      break
+      return okcoin(pair);
+      break;
     case 'exmo':
-      return exmo(pair)
-      break
+      return exmo(pair);
+      break;
     default:
-      console.error(`Unrecognized exchange: "${exchange}"`)
-      return 'Unrecognized exchange'
+      console.error(`Unrecognized exchange: "${exchange}"`);
+      return 'Unrecognized exchange';
   }
 }

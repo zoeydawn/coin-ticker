@@ -7,7 +7,7 @@ module.exports = (pair) => {
 
   let currencyPair = `${asset1}-${asset2}`;
   if (currencyPair === 'BTC-USDT') {
-    currencyPair = 'USDT-BTC'
+    currencyPair = 'USDT-BTC';
   }
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {

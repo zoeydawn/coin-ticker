@@ -1,10 +1,10 @@
-const axios = require('axios')
+const axios = require('axios');
 
 module.exports = (pair) => {
-  const currencyPair = pair.replace('_', '').toLowerCase()
+  const currencyPair = pair.replace('_', '').toLowerCase();
   return axios.get(`https://www.bitstamp.net/api/v2/ticker/${currencyPair}`)
     .then((res) => {
-      const { bid, ask, last, low, high, volume, timestamp } = res.data
+      const { bid, ask, last, low, high, volume, timestamp } = res.data;
       return {
         last,
         ask,
@@ -21,5 +21,4 @@ module.exports = (pair) => {
     .catch((err) => {
       return 'invalid currency pair';
     });
-
 }

@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios');
 
 module.exports = (currencyPair) => {
   const pair = currencyPair.toLowerCase();
@@ -7,8 +7,8 @@ module.exports = (currencyPair) => {
       if (pair !== 'btc_usd' && pair !== 'ltc_usd' && pair !== 'eth_usd') {
         return 'invalid currency pair';
       }
-      const { date, ticker } = res.data
-      const { sell, buy, last, low, high, vol } = ticker
+      const { date, ticker } = res.data;
+      const { sell, buy, last, low, high, vol } = ticker;
       return {
         last,
         ask: buy,
