@@ -10,7 +10,7 @@ module.exports = (pair) => {
 
   return axios.get(`https://api.kraken.com/0/public/Ticker?pair=${currencyPair}`)
     .then((res) => {
-      if (res.data.error) {
+      if (res.data.error && res.data.error[0] === 'EQuery:Unknown asset pair') {
         return 'invalid currency pair';
       }
       const data = res.data.result
