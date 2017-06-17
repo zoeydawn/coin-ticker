@@ -39,6 +39,7 @@ const exchanges = {
   okcoin: [
     'BTC_USD',
     'LTC_USD',
+    'ETH_USD',
   ],
   exmo: [
     'BTC_USD',
@@ -138,6 +139,19 @@ describe('coinTicker', () => {
     expect(coinTicker('not an exchange')).to.be.a('string');
     expect(coinTicker('not an exchange')).to.equal('Unrecognized exchange');
   });
+
+  Object.keys(exchanges).forEach((exchange) => {
+    it(`Should send error message if given invalid arguments in ${exchange}`, (done) => {
+      coinTicker(exchange, 'notacoin')
+      .then((data) => {
+        expect(data).to.be.a('string');
+        expect(data).to.equal('invalid currency pair');
+      })
+      .then(done)
+      .catch(err => done(err));
+    });
+  });
+
 
   it('Should send error message if given no arguments', () => {
     expect(coinTicker()).to.be.a('string');
