@@ -1,28 +1,11 @@
 const axios = require('axios');
 
-function exmo(pair) {
-  const availablePairs = {
-    btcusd: 'BTC_USD',
-    btceur: 'BTC_EUR',
-    btcrub: 'BTC_RUB',
-    btcuah: 'BTC_UAH',
-    dashbtc: 'DASH_BTC',
-    dashusd: 'DASH_USD',
-    ethbtc: 'ETH_BTC',
-    ethusd: 'ETH_USD',
-    ethrub: 'ETH_RUB',
-    dogebtc: 'DOGE_BTC',
-    ltcbtc: 'LTC_BTC',
-    ltcrub: 'LTC_RUB',
-  };
-
-  const currencyPair = Object.keys(availablePairs).includes(pair)
-    ? pair
-    : 'btcusd';
-  const specifiedPair = availablePairs[currencyPair];
-
-  return axios.get('https://api.exmo.com/v1/ticker/').then(res => {
-    const data = res.data[specifiedPair];
+module.exports = (pair) => {
+  return axios.get('https://api.exmo.com/v1/ticker/').then((res) => {
+    const data = res.data[pair];
+    if (!data) {
+      return 'invalid currency pair';
+    }
     const { last_trade, low, high, vol, updated, buy_price, sell_price } = data;
 
     return {
@@ -34,9 +17,9 @@ function exmo(pair) {
       vol,
       timestamp: updated,
       exchange: 'exmo',
-      pair: currencyPair,
+      pair,
+      rawData: data,
     };
-  });
+  })
+  .catch(err => console.error('exmo api error:', error));
 }
-
-module.exports = exmo;

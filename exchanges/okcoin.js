@@ -1,12 +1,14 @@
 const axios = require('axios');
 
-function okcoin(pair) {
-  const currencyPair = pair === 'ltcusd' ? 'ltc_usd' : 'btc_usd';
-  return axios.get(`https://www.okcoin.com/api/v1/ticker.do?symbol=${currencyPair}`)
+module.exports = (currencyPair) => {
+  const pair = currencyPair.toLowerCase();
+  return axios.get(`https://www.okcoin.com/api/v1/ticker.do?symbol=${pair}`)
     .then((res) => {
+      if (pair !== 'btc_usd' && pair !== 'ltc_usd' && pair !== 'eth_usd') {
+        return 'invalid currency pair';
+      }
       const { date, ticker } = res.data;
       const { sell, buy, last, low, high, vol } = ticker;
-      // console.log('res.data:', res.data);
       return {
         last,
         ask: buy,
@@ -16,10 +18,9 @@ function okcoin(pair) {
         vol,
         timestamp: date,
         exchange: 'okcoin',
-        pair: currencyPair.split('_').join(''),
+        pair,
+        rawData: res.data,
       };
-    });
-
+    })
+    .catch(err => console.error('bittrex api error:', error));
 }
-
-module.exports = okcoin;

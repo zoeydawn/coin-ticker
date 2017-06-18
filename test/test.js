@@ -3,423 +3,155 @@ const { expect } = chai;
 
 const coinTicker = require('../index.js');
 
+const exchanges = {
+  bitfinex: [
+    'BTC_USD',
+    'LTC_USD',
+    'ETH_USD',
+  ],
+  coinbase: [
+    'BTC_USD',
+    'ETH_USD',
+    'LTC_USD',
+    'BTC_EUR',
+    'ETH_EUR',
+    'LTC_EUR',
+  ],
+  btce: [
+    'BTC_USD',
+    'LTC_BTC',
+    'DSH_USD',
+    'ETH_USD',
+  ],
+  bitstamp: [
+    'BTC_USD',
+    'BTC_EUR',
+    'EUR_USD',
+    'XRP_EUR',
+  ],
+  kraken: [
+    'BTC_USD',
+    'ETH_USD',
+    'ETC_BTC',
+    'LTC_EUR',
+    'BTC_JPY',
+  ],
+  okcoin: [
+    'BTC_USD',
+    'LTC_USD',
+    'ETH_USD',
+  ],
+  exmo: [
+    'BTC_USD',
+    'BTC_RUB',
+    'BTC_UAH',
+    'DASH_USD',
+    'ETH_BTC',
+    'ETH_RUB',
+    'DOGE_BTC',
+    'LTC_BTC',
+    'LTC_RUB',
+  ],
+  bittrex: [
+    'BTC_USD',
+    'ETH_BTC',
+    'XRP_BTC',
+    'DASH_BTC',
+    'ETH_USD',
+    'XMR_BTC',
+    'ETC_BTC',
+    'FCT_BTC',
+    'ZEC_BTC',
+    'LTC_BTC',
+    'GNT_BTC',
+    'DCR_BTC',
+    'REP_BTC',
+    'MAID_BTC',
+    'LSK_BTC',
+    'DOGE_BTC',
+    'AMP_BTC',
+    'XEM_BTC',
+    'SJCX_BTC',
+    'STEEM_BTC',
+    'ETC_ETH',
+    'NAV_BTC',
+    'SYS_BTC',
+    'GNT_ETH',
+  ],
+  poloniex: [
+    'BTC_USD',
+    'ETH_BTC',
+    'XRP_BTC',
+    'DASH_BTC',
+    'ETH_USD',
+    'XMR_BTC',
+    'ETC_BTC',
+    'FCT_BTC',
+    'ZEC_BTC',
+    'LTC_BTC',
+    'DASH_USD',
+    'GNT_BTC',
+    'XRP_USD',
+    'DCR_BTC',
+    'REP_BTC',
+    'MAID_BTC',
+    'LSK_BTC',
+    'XMR_USD',
+    'DOGE_BTC',
+    'AMP_BTC',
+    'XEM_BTC',
+    'SJCX_BTC',
+    'ETC_USD',
+    'STEEM_BTC',
+    'ETC_ETH',
+    'NAV_BTC',
+    'SYS_BTC',
+    'GNT_ETH',
+    'ZEC_USD',
+    'LTC_USD',
+  ],
+}
+
 describe('coinTicker', () => {
-  it('Should return an object of Bitfinex BTC/USD data', done => {
-    coinTicker('bitfinex').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('bitfinex');
-      done();
-    });
-  });
-
-  it('Should return an object of Bitfinex LTC/USD data', done => {
-    coinTicker('bitfinex', 'ltcusd').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('bitfinex');
-      expect(data.pair).to.equal('ltcusd');
-      done();
-    });
-  });
-
-  it('Should return an object of Bitfinex ETH/BTC data', done => {
-    coinTicker('bitfinex', 'ethusd').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('bitfinex');
-      expect(data.pair).to.equal('ethusd');
-      done();
-    });
-  });
-
-  it('Should return an object of Coinbase BTC/USD data', done => {
-    coinTicker('coinbase', 'btcusd').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.exchange).to.equal('coinbase');
-      expect(data.pair).to.equal('btcusd');
-      done();
-    });
-  });
-
-  it('Should return an object of Coinbase ETH/USD data', done => {
-    coinTicker('coinbase', 'ethusd').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.exchange).to.equal('coinbase');
-      expect(data.pair).to.equal('ethusd');
-      done();
-    });
-  });
-
-  it('Should return an object of Coinbase BTC/EUR data', done => {
-    coinTicker('coinbase', 'btceur').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.exchange).to.equal('coinbase');
-      expect(data.pair).to.equal('btceur');
-      done();
-    });
-  });
-
-  it('Should return an object of Coinbase ETH/EUR data', done => {
-    coinTicker('coinbase', 'etheur').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.exchange).to.equal('coinbase');
-      expect(data.pair).to.equal('etheur');
-      done();
-    });
-  });
-
-  it('Should return an object of BTC-e BTC/USD data', done => {
-    coinTicker('btce').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('btce');
-      done();
-    });
-  });
-
-  it('Should return an object of btce LTC/BTC data', done => {
-    coinTicker('btce', 'ltcbtc').then(data => {
-      // console.log('data:', data);
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('btce');
-      expect(data.pair).to.equal('ltcbtc');
-      done();
-    });
-  });
-
-  it('Should return an object of btce DSH/USD data', done => {
-    coinTicker('btce', 'dshusd').then(data => {
-      // console.log('data:', data);
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('btce');
-      expect(data.pair).to.equal('dshusd');
-      done();
-    });
-  });
-
-  it('Should return an object of btce ETH/LTC data', done => {
-    coinTicker('btce', 'ethltc').then(data => {
-      // console.log('data:', data);
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('btce');
-      expect(data.pair).to.equal('ethltc');
-      done();
-    });
-  });
-
-  it('Should return an object of Bitstamp BTC/USD data', done => {
-    coinTicker('bitstamp').then(data => {
-      expect(data).to.be.an('object');
-      expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-      expect(data.last).to.be.a('string');
-      expect(data.low).to.be.a('string');
-      expect(data.high).to.be.a('string');
-      expect(data.vol).to.be.a('string');
-      expect(data.exchange).to.equal('bitstamp');
-      done();
-    });
-  });
-
-  it('Should return an object of Bitstamp BTC/EUR data', done => {
-    coinTicker('bitstamp', 'btceur')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('bitstamp');
-        expect(data.pair).to.equal('btceur');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Bitstamp EUR/USD data', done => {
-    coinTicker('bitstamp', 'eurusd')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('bitstamp');
-        expect(data.pair).to.equal('eurusd');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Bitstamp XRP/EUR data', done => {
-    coinTicker('bitstamp', 'xrpeur')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('bitstamp');
-        expect(data.pair).to.equal('xrpeur');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Kraken BTC/USD data', done => {
-    coinTicker('kraken')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('kraken');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Kraken ETH/USD data', done => {
-    coinTicker('kraken', 'ethusd')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('kraken');
-        expect(data.pair).to.equal('ethusd');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Kraken ETC/BTC data', done => {
-    coinTicker('kraken', 'etcbtc')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('kraken');
-        expect(data.pair).to.equal('etcbtc');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Kraken LTC/EUR data', done => {
-    coinTicker('kraken', 'ltceur')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('kraken');
-        expect(data.pair).to.equal('ltceur');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Kraken BTC/JPY data', done => {
-    coinTicker('kraken', 'btcjpy')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('kraken');
-        expect(data.pair).to.equal('btcjpy');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Okcoin BTC/USD data', done => {
-    coinTicker('okcoin')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('okcoin');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  it('Should return an object of Okcoin LTC/USD data', done => {
-    coinTicker('okcoin', 'ltcusd')
-      .then(data => {
-        // console.log('data:', data);
-        expect(data).to.be.an('object');
-        expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-        expect(data.last).to.be.a('string');
-        expect(data.low).to.be.a('string');
-        expect(data.high).to.be.a('string');
-        expect(data.vol).to.be.a('string');
-        expect(data.exchange).to.equal('okcoin');
-        expect(data.pair).to.equal('ltcusd');
-      })
-      .then(done)
-      .catch(err => done(err));
-  });
-
-  describe('Exmo exchange', () => {
-    const availablePairs = [
-      'btcusd',
-      'btceur',
-      'btcrub',
-      'btcuah',
-      'dashbtc',
-      'dashusd',
-      'ethbtc',
-      'ethusd',
-      'ethrub',
-      'dogebtc',
-      'ltcbtc',
-      'ltcrub',
-    ];
-
-    availablePairs.forEach(pair => {
-      it(`Should return an object of EXMO ${pair} data`, done => {
-        coinTicker('exmo', pair)
-          .then(data => {
+  Object.keys(exchanges).forEach((exchange) => {
+    exchanges[exchange].forEach((pair) => {
+      it(`Should return an object of ${exchange} ${pair} data`, (done) => {
+        coinTicker(exchange, pair)
+          .then((data) => {
+            // console.log('data.pair:', data.pair);
             expect(data).to.be.an('object');
-            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
+            expect(data.rawData).to.be.an('object');
+            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
             expect(data.last).to.be.a('string');
             expect(data.low).to.be.a('string');
             expect(data.high).to.be.a('string');
             expect(data.vol).to.be.a('string');
-            expect(data.exchange).to.equal('exmo');
-            expect(data.pair).to.equal(pair);
+            expect(data.exchange).to.equal(exchange);
+            // expect(data.pair).to.equal(pair);
           })
           .then(done)
           .catch(err => done(err));
-      });
-    });
-  });
-
-  describe('Poloniex exchange', () => {
-    const availablePairs = [
-      'btcusd',
-      'ethbtc',
-      'xrpbtc',
-      'dashbtc',
-      'ethusd',
-      'xmrbtc',
-      'etcbtc',
-      'fctbtc',
-      'zecbtc',
-      'ltcbtc',
-      'dashusd',
-      'gntbtc',
-      'xrpusd',
-      'dcrbtc',
-      'repbtc',
-      'maidbtc',
-      'lskbtc',
-      'xmrusd',
-      'dogebtc',
-      'ampbtc',
-      'xembtc',
-      'sjcxbtc',
-      'etcusd',
-      'steembtc',
-      'etceth',
-      'navbtc',
-      'sysbtc',
-      'gnteth',
-      'zecusd',
-      'ltcusd',
-    ];
-
-    availablePairs.forEach(pair => {
-      it(`Should return an object of Poloniex ${pair} data`, done => {
-        coinTicker('poloniex', pair)
-          .then(data => {
-            expect(data).to.be.an('object');
-            expect(data).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair');
-            expect(data.last).to.be.a('string');
-            expect(data.low).to.be.a('string');
-            expect(data.high).to.be.a('string');
-            expect(data.vol).to.be.a('string');
-            expect(data.exchange).to.equal('poloniex');
-            expect(data.pair).to.equal(pair);
-          })
-          .then(done)
-          .catch(err => done(err));
-      });
-    });
+      })
+    })
   });
 
   it('Should send error message if given invalid arguments', () => {
     expect(coinTicker('not an exchange')).to.be.a('string');
     expect(coinTicker('not an exchange')).to.equal('Unrecognized exchange');
   });
+
+  Object.keys(exchanges).forEach((exchange) => {
+    it(`Should send error message if given invalid arguments in ${exchange}`, (done) => {
+      coinTicker(exchange, 'notacoin')
+      .then((data) => {
+        expect(data).to.be.a('string');
+        expect(data).to.equal('invalid currency pair');
+      })
+      .then(done)
+      .catch(err => done(err));
+    });
+  });
+
 
   it('Should send error message if given no arguments', () => {
     expect(coinTicker()).to.be.a('string');

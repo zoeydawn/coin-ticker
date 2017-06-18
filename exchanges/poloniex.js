@@ -1,48 +1,17 @@
 const axios = require('axios');
 
-function poloniex(pair) {
-  const availablePairs = {
-    btcusd: 'USDT_BTC',
-    ethbtc: 'BTC_ETH',
-    xrpbtc: 'BTC_XRP',
-    dashbtc: 'BTC_DASH',
-    ethusd: 'USDT_ETH',
-    xmrbtc: 'BTC_XMR',
-    etcbtc: 'BTC_ETC',
-    fctbtc: 'BTC_FCT',
-    zecbtc: 'BTC_ZEC',
-    ltcbtc: 'BTC_LTC',
-    dashusd: 'USDT_DASH',
-    gntbtc: 'BTC_GNT',
-    xrpusd: 'USDT_XRP',
-    dcrbtc: 'BTC_DCR',
-    repbtc: 'BTC_REP',
-    maidbtc: 'BTC_MAID',
-    lskbtc: 'BTC_LSK',
-    xmrusd: 'USDT_XMR',
-    dogebtc: 'BTC_DOGE',
-    ampbtc: 'BTC_AMP',
-    xembtc: 'BTC_XEM',
-    sjcxbtc: 'BTC_SJCX',
-    etcusd: 'USDT_ETC',
-    steembtc: 'BTC_STEEM',
-    etceth: 'ETH_ETC',
-    navbtc: 'BTC_NAV',
-    sysbtc: 'BTC_SYS',
-    gnteth: 'ETH_GNT',
-    zecusd: 'USDT_ZEC',
-    ltcusd: 'USDT_LTC',
-  };
+module.exports = (currencyPair) => {
+  const pairArr = currencyPair.split('_');
+  const asset1 = pairArr[1] === 'USD' ? 'USDT' : pairArr[1];
+  const asset2 = pairArr[0] === 'USD' ? 'USDT' : pairArr[0];
 
-  const currencyPair = Object.keys(availablePairs).includes(pair)
-    ? pair
-    : 'btcusd';
-  const specifiedPair = availablePairs[currencyPair];
-
+  const pair = asset1 + '_' + asset2;
   return axios.get('https://poloniex.com/public?command=returnTicker')
     .then((res) => {
-      const { last, lowestAsk, highestBid, percentChange, baseVolume, high24hr, low24hr } = res.data[specifiedPair];
-
+      if (!res.data[pair]) {
+        return 'invalid currency pair';
+      }
+      const { last, lowestAsk, highestBid, percentChange, baseVolume, high24hr, low24hr } = res.data[pair];
       return {
         last,
         ask: lowestAsk,
@@ -52,9 +21,9 @@ function poloniex(pair) {
         vol: baseVolume,
         timestamp: Date.now() / 1000,
         exchange: 'poloniex',
-        pair: currencyPair,
+        pair,
+        rawData: res.data[pair],
       };
-    });
+    })
+  .catch(err => console.error('poloniex error:', err));
 }
-
-module.exports = poloniex;

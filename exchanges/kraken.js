@@ -1,32 +1,20 @@
 const axios = require('axios');
 
-function kraken(pair) {
-  const availablePairs = {
-    etcbtc: 'XETCXXBT',
-    etceur: 'XETCZEUR',
-    etcusd: 'XETCZUSD',
-    ethbtc: 'XETHXXBT',
-    ethcad: 'XETHZCAD',
-    etheur: 'XETHZEUR',
-    ethgbp: 'XETHZGBP',
-    ethjpy: 'XETHZJPY',
-    ethusd: 'XETHZUSD',
-    ltcbtc: 'XLTCXXBT',
-    ltceur: 'XLTCZEUR',
-    ltcusd: 'XLTCZUSD',
-    btccad: 'XXBTZCAD',
-    btceur: 'XXBTZEUR',
-    btcgbp: 'XXBTZGBP',
-    btcjpy: 'XXBTZJPY',
-    btcusd: 'XXBTZUSD',
-  };
-  const currencyPair = Object.keys(availablePairs).includes(pair) ? pair : 'btcusd';
-  const specifiedPair = availablePairs[currencyPair];
+module.exports = (pair) => {
+  const assetAlts = {
+    'BTC': 'XBT',
+    'BTC.d': 'XBT.d',
+  }
+  const [first, second] = pair.split('_');
+  const currencyPair = `${(assetAlts[first] || first)}${(assetAlts[second] || second)}`;
 
-  return axios.get(`https://api.kraken.com/0/public/Ticker?pair=${specifiedPair}`)
+  return axios.get(`https://api.kraken.com/0/public/Ticker?pair=${currencyPair}`)
     .then((res) => {
-      const { a, b, c, v, l, h } = res.data.result[specifiedPair];
-      // console.log('res.data:', res.data);
+      if (res.data.error && res.data.error[0] === 'EQuery:Unknown asset pair') {
+        return 'invalid currency pair';
+      }
+      const data = res.data.result;
+      const { a, b, c, v, l, h } = data[Object.keys(data)[0]];
       return {
         ask: a[0],
         bid: b[0],
@@ -36,10 +24,9 @@ function kraken(pair) {
         high: h[1],
         timestamp: Date.now() / 1000,
         exchange: 'kraken',
-        pair: currencyPair,
+        pair,
+        rawData: data,
       };
-    });
-
+    })
+    .catch(err => console.error('kraken api error:', error));
 }
-
-module.exports = kraken;

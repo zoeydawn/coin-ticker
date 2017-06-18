@@ -1,18 +1,10 @@
 const axios = require('axios');
 
-function bitstamp(pair) {
-  const availablePairs = [
-    'btceur',
-    'eurusd',
-    'xrpusd',
-    'xrpeur',
-  ];
-  const currencyPair = availablePairs.includes(pair) ? pair : 'btcusd';
-
+module.exports = (pair) => {
+  const currencyPair = pair.replace('_', '').toLowerCase();
   return axios.get(`https://www.bitstamp.net/api/v2/ticker/${currencyPair}`)
     .then((res) => {
       const { bid, ask, last, low, high, volume, timestamp } = res.data;
-      // console.log('res.data:', res.data);
       return {
         last,
         ask,
@@ -22,10 +14,11 @@ function bitstamp(pair) {
         vol: volume,
         timestamp,
         exchange: 'bitstamp',
-        pair: currencyPair,
+        pair,
+        rawData: res.data,
       };
+    })
+    .catch((err) => {
+      return 'invalid currency pair';
     });
-
 }
-
-module.exports = bitstamp;

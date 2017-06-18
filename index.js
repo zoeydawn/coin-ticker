@@ -8,7 +8,12 @@ const exmo = require('./exchanges/exmo');
 const poloniex = require('./exchanges/poloniex');
 const coinbase = require('./exchanges/coinbase');
 
-function coinTicker(exchange, pair) {
+module.exports = (exchange, currencyPair) => {
+  let pair = currencyPair ? currencyPair.toUpperCase() : 'BTC_USD';
+  if (!pair.includes('_')) {
+    pair = pair.slice(0, -3) + '_' + pair.substr(pair.length - 3);
+  }
+
   switch (exchange) {
     case 'bitfinex':
       return bitfinex(pair);
@@ -26,11 +31,11 @@ function coinTicker(exchange, pair) {
       return kraken(pair);
       break;
     case 'poloniex':
-      return poloniex(pair);
-      break;
+      return poloniex(pair);;
+      break;;
     case 'coinbase':
-      return coinbase(pair);
-      break;
+      return coinbase(pair);;
+      break;;
     case 'okcoin':
       return okcoin(pair);
       break;
@@ -42,5 +47,3 @@ function coinTicker(exchange, pair) {
       return 'Unrecognized exchange';
   }
 }
-
-module.exports = coinTicker;
