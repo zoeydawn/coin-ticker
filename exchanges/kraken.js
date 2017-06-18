@@ -28,5 +28,5 @@ module.exports = (pair) => {
         rawData: data,
       };
     })
-    .catch(err => console.error('kraken api error:', error));
+    .catch(err => console.error('kraken api error:', err));
 }

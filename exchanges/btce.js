@@ -23,5 +23,5 @@ module.exports = (pair) => {
         rawData: res.data[currencyPair],
       };
     })
-    .catch(err => console.error('btc-e api error:', error));
+    .catch(err => console.error('btc-e api error:', err));
 }

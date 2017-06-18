@@ -28,5 +28,5 @@ module.exports = (pair) => {
         rawData: res.data.result[0],
       };
     })
-    .catch(err => console.error('bittrex api error:', error));
+    .catch(err => console.error('bittrex api error:', err));
 }

@@ -21,5 +21,5 @@ module.exports = (pair) => {
       rawData: data,
     };
   })
-  .catch(err => console.error('exmo api error:', error));
+  .catch(err => console.error('exmo api error:', err));
 }
