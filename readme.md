@@ -239,7 +239,7 @@ coinTicker('bitfinex', 'BTC_USD')
 // }
 ```
 
-**Contribute to Coin-ticker:**
+
 If you find this package useful, please contribute by donating bitcoin or opening a pull request.
 
 *BTC Donation address:*
