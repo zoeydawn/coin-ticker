@@ -39,7 +39,7 @@ A string declaring one of the available exchanges:
     - 'exmo'
 
 **currency-pair:**
-An string declaring the currencies or assets to retrieve.
+A string declaring the currencies or assets to retrieve.
 Any market that is provided by the exchange can be used.
 Example asset pairs by exchange:
 
@@ -238,3 +238,9 @@ coinTicker('bitfinex', 'BTC_USD')
 //   rawData: { ... }
 // }
 ```
+
+**Contribute to Coin-ticker:**
+If you find this package useful, please contribute by donating bitcoin or opening a pull request.
+
+*BTC Donation address:*
+`1Gr9UcXdM5Kmnseht2u29o1SsqMnBkTsYP`
