@@ -240,7 +240,10 @@ coinTicker('bitfinex', 'BTC_USD')
 ```
 
 
-If you find this package useful, please contribute by donating bitcoin or opening a pull request.
+If you find this package useful, please contribute by donating or opening a pull request.
 
-*BTC donation address:*
+*BTC:*
 `1Gr9UcXdM5Kmnseht2u29o1SsqMnBkTsYP`
+
+*ETH:*
+`0xc519a1904c5a9D99C13374d22388091B807c54cF`
