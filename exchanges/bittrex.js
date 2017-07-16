@@ -1,20 +1,13 @@
-const axios = require('axios');
+const axios = require('axios')
 
 module.exports = (pair) => {
-  const pairArr = pair.split('_');
-  const asset1 = pairArr[1] === 'USD' ? 'USDT' : pairArr[1];
-  const asset2 = pairArr[0] === 'USD' ? 'USDT' : pairArr[0];
-
-  let currencyPair = `${asset1}-${asset2}`;
-  if (currencyPair === 'BTC-USDT') {
-    currencyPair = 'USDT-BTC';
-  }
+  let currencyPair = pair.replace(/^(.+)_(.+)$/,'$2_$1')
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {
-      if (res.data.message === 'INVALID_MARKET') {
-        return 'invalid currency pair';
-      }
-      const { Last, Ask, Bid, Volume, High, Low } = res.data.result[0];
+      if (res.data.message === 'INVALID_MARKET')
+        return 'invalid currency pair'
+
+      const { Last, Ask, Bid, Volume, High, Low } = res.data.result[0]
       return {
         last: Last.toString(),
         ask: Ask.toString(),
@@ -26,7 +19,7 @@ module.exports = (pair) => {
         exchange: 'bittrex',
         pair,
         rawData: res.data.result[0],
-      };
+      }
     })
-    .catch(err => console.error('bittrex api error:', err));
+    .catch(err => console.error('bittrex api error:', err))
 }

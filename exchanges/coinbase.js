@@ -1,27 +1,27 @@
-const axios = require('axios');
+const axios = require('axios')
 
-const VERSION_DATE = '2017-06-17';
+const VERSION_DATE = '2017-06-17'
 
-function coinbase(pair) {
-  const currencyPair = pair.replace('_', '-');
-  let spot;
-  let buy;
-  let sell;
+module.exports = (pair) => {
+  const currencyPair = pair.replace('_', '-')
+  let spot
+  let buy
+  let sell
 
   return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/spot`, { headers: {'CB-VERSION': VERSION_DATE}})
     .then((spotRes) => {
       if (spotRes.data.errors) {
-        error = spotRes.data.errors.id;
+        error = spotRes.data.errors.id
       }
-      spot = spotRes.data.data;
-      return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/buy`, { headers: {'CB-VERSION': VERSION_DATE}});
+      spot = spotRes.data.data
+      return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/buy`, { headers: {'CB-VERSION': VERSION_DATE}})
     })
     .then((buyRes) => {
-      buy = buyRes.data.data;
-      return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/sell`, { headers: {'CB-VERSION': VERSION_DATE}});
+      buy = buyRes.data.data
+      return axios.get(`https://api.coinbase.com/v2/prices/${currencyPair}/sell`, { headers: {'CB-VERSION': VERSION_DATE}})
     })
     .then((sellRes) => {
-      sell = sellRes.data.data;
+      sell = sellRes.data.data
       return {
         last: spot.amount,
         ask: buy.amount,
@@ -34,11 +34,9 @@ function coinbase(pair) {
         pair: pair,
 
         rawData: { spot, buy, sell },
-      };
+      }
     })
     .catch((err) => {
-      return 'invalid currency pair';
-    });
+      return 'invalid currency pair'
+    })
 }
-
-module.exports = coinbase;
