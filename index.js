@@ -7,9 +7,15 @@ const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
 const poloniex = require('./exchanges/poloniex');
 const coinbase = require('./exchanges/coinbase');
+const pairs = require('./pairs');
 
 module.exports = (exchange, currencyPair) => {
+  if (currencyPair === 'pairs') {
+    return pairs(exchange);
+  }
+
   let pair = currencyPair ? currencyPair.toUpperCase() : 'BTC_USD';
+
   if (!pair.includes('_')) {
     pair = pair.slice(0, -3) + '_' + pair.substr(pair.length - 3);
   }
