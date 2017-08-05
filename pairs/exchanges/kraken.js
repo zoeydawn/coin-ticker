@@ -23,6 +23,6 @@ module.exports = () => {
       });
     })
     .catch((err) => {
-      console.error('Error fetching bitfinex pairs:', err);
+      console.error('Error fetching kraken pairs:', err);
     });
 }
