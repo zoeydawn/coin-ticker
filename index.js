@@ -1,5 +1,4 @@
 const bitfinex = require('./exchanges/bitfinex');
-const btce = require('./exchanges/btce');
 const bitstamp = require('./exchanges/bitstamp');
 const bittrex = require('./exchanges/bittrex');
 const kraken = require('./exchanges/kraken');
@@ -23,9 +22,6 @@ module.exports = (exchange, currencyPair) => {
   switch (exchange) {
     case 'bitfinex':
       return bitfinex(pair);
-      break;
-    case 'btce':
-      return btce(pair);
       break;
     case 'bitstamp':
       return bitstamp(pair);

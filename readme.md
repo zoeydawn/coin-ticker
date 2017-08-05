@@ -33,7 +33,6 @@ A string declaring one of the available exchanges:
     - 'coinbase'
     - 'poloniex'
     - 'bittrex'
-    - 'btce'
     - 'kraken'
     - 'okcoin'
     - 'exmo'
@@ -130,32 +129,6 @@ Example asset pairs by exchange:
     - 'NAV_BTC'
     - 'SYS_BTC'
     - 'GNT_ETH'
-
-**BTC-e:**
-
-    - 'BTC_USD'
-    - 'BTC_EUR'
-    - 'BTC_EUR'
-    - 'LTC_BTC'
-    - 'LTC_USD'
-    - 'LTC_RUR'
-    - 'LTC_EUR'
-    - 'NMC_BTC'
-    - 'NMC_USD'
-    - 'NVC_BTC'
-    - 'NVC_USD'
-    - 'USD_RUR'
-    - 'EUR_USD'
-    - 'EUR_RUR'
-    - 'PPC_BTC'
-    - 'PPC_USD'
-    - 'DSH_BTC'
-    - 'DSH_USD'
-    - 'ETH_BTC'
-    - 'ETH_USD'
-    - 'ETH_EUR'
-    - 'ETH_LTC'
-    - 'ETH_RUR'
 
 **Kraken:**
 
