@@ -11,7 +11,8 @@ const exchanges = [
   'okcoin',
   'exmo',
   'bittrex',
-  'poloniex'
+  'poloniex',
+  'bitcoinaverage'
 ]
 
 describe('coinTicker', () => {
@@ -24,6 +25,7 @@ describe('coinTicker', () => {
         return coinTicker(exchange, data[0]);
       })
       .then((tickerData) => {
+        // console.log('tickerData:', tickerData);
         expect(tickerData).to.be.an('object');
         expect(tickerData.rawData).to.be.an('object');
         expect(tickerData).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');

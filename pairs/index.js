@@ -6,6 +6,7 @@ const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
 const bittrex = require('./exchanges/bittrex');
 const poloniex = require('./exchanges/poloniex');
+const bitcoinaverage = require('./exchanges/bitcoinaverage');
 
 module.exports = (exchange) => {
   switch (exchange) {
@@ -32,6 +33,10 @@ module.exports = (exchange) => {
       break;
     case 'poloniex':
       return poloniex();
+      break;
+    case 'bitcoinaverage':
+    case 'bitcoinAverage':
+      return bitcoinaverage();
       break;
     default:
       console.error(`Unrecognized exchange: "${exchange}"`);
