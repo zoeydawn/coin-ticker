@@ -1,14 +1,8 @@
 const axios = require('axios');
 
 module.exports = (pair) => {
-  const pairArr = pair.split('_');
-  const asset1 = pairArr[1] === 'USD' ? 'USDT' : pairArr[1];
-  const asset2 = pairArr[0] === 'USD' ? 'USDT' : pairArr[0];
+  let currencyPair = pair.replace(/^(.+)_(.+)$/,'$2-$1');
 
-  let currencyPair = `${asset1}-${asset2}`;
-  if (currencyPair === 'BTC-USDT') {
-    currencyPair = 'USDT-BTC';
-  }
   return axios.get(`https://bittrex.com/api/v1.1/public/getmarketsummary?market=${currencyPair}`)
     .then((res) => {
       if (res.data.message === 'INVALID_MARKET') {

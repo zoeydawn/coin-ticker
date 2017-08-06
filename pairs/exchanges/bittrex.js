@@ -5,8 +5,6 @@ module.exports = () => {
     .then((res) => {
       return res.data.result.map((market) => {
         const { MarketCurrency, BaseCurrency } = market;
-        // pair = currencyPair.toUpperCase();
-        // return pair.slice(0, -3) + '_' + pair.substr(pair.length - 3)
         return `${MarketCurrency}_${BaseCurrency}`
       })
     })
