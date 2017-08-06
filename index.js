@@ -6,6 +6,7 @@ const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
 const poloniex = require('./exchanges/poloniex');
 const coinbase = require('./exchanges/coinbase');
+const gdax = require('./exchanges/gdax');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
 const pairs = require('./pairs');
 
@@ -44,6 +45,9 @@ module.exports = (exchange, currencyPair) => {
       break;
     case 'exmo':
       return exmo(pair);
+      break;
+    case 'gdax':
+      return gdax(pair);
       break;
     case 'bitcoinaverage':
     case 'bitcoinAverage':

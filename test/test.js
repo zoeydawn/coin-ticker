@@ -12,20 +12,22 @@ const exchanges = [
   'exmo',
   'bittrex',
   'poloniex',
-  'bitcoinaverage'
-]
+  'bitcoinaverage',
+  'gdax'
+];
 
 describe('coinTicker', () => {
   exchanges.forEach((exchange) => {
     it(`Should return ${exchange} pairs and tickerData`, (done) => {
       coinTicker(exchange, 'pairs')
       .then((data) => {
+        console.log('data:', data);
         expect(data).to.be.an('array');
         expect(data[0]).to.be.an('string');
         return coinTicker(exchange, data[0]);
       })
       .then((tickerData) => {
-        // console.log('tickerData:', tickerData);
+        console.log('tickerData:', tickerData);
         expect(tickerData).to.be.an('object');
         expect(tickerData.rawData).to.be.an('object');
         expect(tickerData).to.have.all.keys('last', 'ask', 'bid', 'low', 'high', 'vol', 'timestamp', 'exchange', 'pair', 'rawData');
