@@ -36,6 +36,8 @@ A string declaring one of the available exchanges:
     - 'kraken'
     - 'okcoin'
     - 'exmo'
+    - 'bitcoinAverage'
+    - 'gdax'
 
 **currency-pair:**
 A string declaring the currencies or assets to retrieve.
