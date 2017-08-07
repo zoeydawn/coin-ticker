@@ -8,6 +8,7 @@ const bittrex = require('./exchanges/bittrex');
 const poloniex = require('./exchanges/poloniex');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
 const gdax = require('./exchanges/gdax');
+const yunbi = require('./exchanges/yunbi');
 
 module.exports = (exchange) => {
   switch (exchange) {
@@ -41,6 +42,9 @@ module.exports = (exchange) => {
       break;
     case 'gdax':
       return gdax();
+      break;
+    case 'yunbi':
+      return yunbi();
       break;
     default:
       console.error(`Unrecognized exchange: "${exchange}"`);

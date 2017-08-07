@@ -13,10 +13,12 @@ const exchanges = [
   'bittrex',
   'poloniex',
   'bitcoinaverage',
-  'gdax'
+  'gdax',
+  'yunbi',
 ];
 
-describe('coinTicker', () => {
+describe('coinTicker', function() {
+  this.timeout(15000);
   exchanges.forEach((exchange) => {
     it(`Should return ${exchange} pairs and tickerData`, (done) => {
       coinTicker(exchange, 'pairs')
