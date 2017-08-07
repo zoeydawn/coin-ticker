@@ -14,194 +14,80 @@ $ npm install --save coin-ticker
 **Require:**
 ```js
 const coinTicker = require('coin-ticker');
-// => Promise
-
 ```
 
 **Syntax:**
 ```js
-coinTicker(exchange, currency-pair)
+coinTicker([exchange, assetPair])
 ```
 
-**Parameters:**
+**Get available exchanges:**
 
-**exchange:**
-A string declaring one of the available exchanges:
+The coinTicker function with no arguments will return an array of all available exchanges
+```js
+coinTicker()
+// =>
+// [
+//   'bitfinex',
+//   'coinbase',
+//   'bitstamp',
+//   'kraken',
+//   'okcoin',
+//   'exmo',
+//   'bittrex',
+//   'poloniex',
+//   'bitcoinaverage',
+//   'gdax',
+//   'yunbi'
+// ]
+```
 
-    - 'bitfinex'
-    - 'bitstamp'
-    - 'coinbase'
-    - 'poloniex'
-    - 'bittrex'
-    - 'btce'
-    - 'kraken'
-    - 'okcoin'
-    - 'exmo'
 
-**currency-pair:**
-A string declaring the currencies or assets to retrieve.
-Any market that is provided by the exchange can be used.
-Example asset pairs by exchange:
+**Get available asset pairs by exchange:**
 
-**Bitfinex:**
+Declare the exchange and use string 'pairs' to request available asset pairs. coinTicker will return a promise.
+```js
+coinTicker('poloniex', 'pairs')
+  .then((pairs) => {
+    console.log(pairs);
+  })
+// =>
+// [
+//   'BCN_BTC',
+//   'BELA_BTC',
+//   'BLK_BTC',
+//   'BTCD_BTC',
+//   'BTM_BTC',
+//   'BTS_BTC',
+//   'BURST_BTC',
+//   'CLAM_BTC',
+//   'DASH_BTC',
+//   'DGB_BTC',
+//   'DOGE_BTC',
+//   'EMC2_BTC',
+//   'FLDC_BTC',
+//   'FLO_BTC',
+//   'GAME_BTC',
+//   'GRC_BTC',
+//   'HUC_BTC',
+//   'LTC_BTC',
+//   'MAID_BTC',
+//   'OMNI_BTC',
+//   ...
+// ]
+```
 
-    - 'BTC_USD'
-    - 'LTC_USD'
-    - 'LTC_BTC'
-    - 'ETH_USD'
-    - 'ETH_BTC'
-    - 'ETC_BTC'
-    - 'ETC_USD'
-    - 'ZEC_USD'
-    - 'ZEC_BTC'
+**Get Ticker Data:**
 
-**Bitstamp:**
-
-    - 'BTC_USD'
-    - 'BTC_EUR'
-    - 'EUR_USD'
-    - 'XRP_USD'
-    - 'XRP_EUR'
-
-**Coinbase:**
-
-    - 'BTC_USD'
-    - 'BTC_EUR'
-    - 'ETH_USD'
-    - 'ETH_EUR'
-    - 'LTC_USD'
-    - 'LTC_EUR'
-
-**Poloniex:**
-
-    - 'BTC_USD'
-    - 'ETH_BTC'
-    - 'XRP_BTC'
-    - 'DASH_BTC'
-    - 'ETH_USD'
-    - 'XMR_BTC'
-    - 'ETC_BTC'
-    - 'FCT_BTC'
-    - 'ZEC_BTC'
-    - 'LTC_BTC'
-    - 'DASH_USD'
-    - 'GNT_BTC'
-    - 'XRP_USD'
-    - 'DCR_BTC'
-    - 'REP_BTC'
-    - 'MAID_BTC'
-    - 'LSK_BTC'
-    - 'XMR_USD'
-    - 'DOGE_BTC'
-    - 'AMP_BTC'
-    - 'XEM_BTC'
-    - 'ETC_USD'
-    - 'STEEM_BTC'
-    - 'ETC_ETH'
-    - 'NAV_BTC'
-    - 'SYS_BTC'
-    - 'GNT_ETH'
-    - 'ZEC_USD'
-    - 'LTC_USD'
-
-**Bittrex**
-
-    - 'BTC_USD'
-    - 'ETH_BTC'
-    - 'XRP_BTC'
-    - 'DASH_BTC'
-    - 'ETH_USD'
-    - 'XMR_BTC'
-    - 'ETC_BTC'
-    - 'FCT_BTC'
-    - 'ZEC_BTC'
-    - 'LTC_BTC'
-    - 'GNT_BTC'
-    - 'DCR_BTC'
-    - 'REP_BTC'
-    - 'MAID_BTC'
-    - 'LSK_BTC'
-    - 'DOGE_BTC'
-    - 'AMP_BTC'
-    - 'XEM_BTC'
-    - 'SJCX_BTC'
-    - 'STEEM_BTC'
-    - 'ETC_ETH'
-    - 'NAV_BTC'
-    - 'SYS_BTC'
-    - 'GNT_ETH'
-
-**BTC-e:**
-
-    - 'BTC_USD'
-    - 'BTC_EUR'
-    - 'BTC_EUR'
-    - 'LTC_BTC'
-    - 'LTC_USD'
-    - 'LTC_RUR'
-    - 'LTC_EUR'
-    - 'NMC_BTC'
-    - 'NMC_USD'
-    - 'NVC_BTC'
-    - 'NVC_USD'
-    - 'USD_RUR'
-    - 'EUR_USD'
-    - 'EUR_RUR'
-    - 'PPC_BTC'
-    - 'PPC_USD'
-    - 'DSH_BTC'
-    - 'DSH_USD'
-    - 'ETH_BTC'
-    - 'ETH_USD'
-    - 'ETH_EUR'
-    - 'ETH_LTC'
-    - 'ETH_RUR'
-
-**Kraken:**
-
-    - 'ETC_BTC'
-    - 'ETC_EUR'
-    - 'ETC_USD'
-    - 'ETH_BTC'
-    - 'ETH_CAD'
-    - 'ETH_EUR'
-    - 'ETH_GBP'
-    - 'ETH_JPY'
-    - 'ETH_USD'
-    - 'LTC_BTC'
-    - 'LTC_EUR'
-    - 'LTC_USD'
-    - 'BTC_CAD'
-    - 'BTC_EUR'
-    - 'BTC_GBP'
-    - 'BTC_JPY'
-    - 'BTC_USD'
-
-**Okcoin:**
-
-    - 'BTC_USD'
-    - 'LTC_USD'
-    - 'ETH_USD'
-
-**Exmo:**
-
-    - 'BTC_USD'
-    - 'BTC_EUR'
-    - 'BTC_RUB'
-    - 'BTC_UAH'
-    - 'DASH_BTC'
-    - 'DASH_USD'
-    - 'ETH_BTC'
-    - 'ETH_USD'
-    - 'ETH_RUB'
-    - 'DOGE_BTC'
-    - 'LTC_BTC'
-    - 'LTC_RUB'
-
+Simply declare the exchange and asset pair to get the latest market info. coinTicker will return a promise.
+```js
+coinTicker('bitfinex', 'BTC_USD')
+// => Promise
+```
 
 **Response Data:**
 
-  An object containing the following values:
+An object containing the following values:
 
 ```js
 {

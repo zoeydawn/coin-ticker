@@ -1,5 +1,4 @@
 const bitfinex = require('./exchanges/bitfinex');
-const btce = require('./exchanges/btce');
 const bitstamp = require('./exchanges/bitstamp');
 const bittrex = require('./exchanges/bittrex');
 const kraken = require('./exchanges/kraken');
@@ -7,9 +6,32 @@ const okcoin = require('./exchanges/okcoin');
 const exmo = require('./exchanges/exmo');
 const poloniex = require('./exchanges/poloniex');
 const coinbase = require('./exchanges/coinbase');
+const gdax = require('./exchanges/gdax');
+const yunbi = require('./exchanges/yunbi');
+const bitcoinaverage = require('./exchanges/bitcoinaverage');
+const pairs = require('./pairs');
+
+const availableExchanges = [
+  'bitfinex',
+  'coinbase',
+  'bitstamp',
+  'kraken',
+  'okcoin',
+  'exmo',
+  'bittrex',
+  'poloniex',
+  'bitcoinaverage',
+  'gdax',
+  'yunbi',
+];
 
 module.exports = (exchange, currencyPair) => {
+  if (currencyPair === 'pairs') {
+    return pairs(exchange);
+  }
+
   let pair = currencyPair ? currencyPair.toUpperCase() : 'BTC_USD';
+
   if (!pair.includes('_')) {
     pair = pair.slice(0, -3) + '_' + pair.substr(pair.length - 3);
   }
@@ -17,9 +39,6 @@ module.exports = (exchange, currencyPair) => {
   switch (exchange) {
     case 'bitfinex':
       return bitfinex(pair);
-      break;
-    case 'btce':
-      return btce(pair);
       break;
     case 'bitstamp':
       return bitstamp(pair);
@@ -42,8 +61,19 @@ module.exports = (exchange, currencyPair) => {
     case 'exmo':
       return exmo(pair);
       break;
+    case 'gdax':
+      return gdax(pair);
+      break;
+    case 'yunbi':
+      return yunbi(pair);
+      break;
+    case 'bitcoinaverage':
+    case 'bitcoinAverage':
+      return bitcoinaverage(pair);
+      break;
     default:
-      console.error(`Unrecognized exchange: "${exchange}"`);
-      return 'Unrecognized exchange';
+      // console.error(`Unrecognized exchange: "${exchange}"`);
+      // return 'Unrecognized exchange';
+      return availableExchanges;
   }
 }
