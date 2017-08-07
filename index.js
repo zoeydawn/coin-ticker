@@ -11,6 +11,20 @@ const yunbi = require('./exchanges/yunbi');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
 const pairs = require('./pairs');
 
+const availableExchanges = [
+  'bitfinex',
+  'coinbase',
+  'bitstamp',
+  'kraken',
+  'okcoin',
+  'exmo',
+  'bittrex',
+  'poloniex',
+  'bitcoinaverage',
+  'gdax',
+  'yunbi',
+];
+
 module.exports = (exchange, currencyPair) => {
   if (currencyPair === 'pairs') {
     return pairs(exchange);
@@ -58,7 +72,8 @@ module.exports = (exchange, currencyPair) => {
       return bitcoinaverage(pair);
       break;
     default:
-      console.error(`Unrecognized exchange: "${exchange}"`);
-      return 'Unrecognized exchange';
+      // console.error(`Unrecognized exchange: "${exchange}"`);
+      // return 'Unrecognized exchange';
+      return availableExchanges;
   }
 }

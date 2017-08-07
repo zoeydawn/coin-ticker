@@ -19,6 +19,13 @@ const exchanges = [
 
 describe('coinTicker', function() {
   this.timeout(15000);
+  it('Should return array of all available exchanges', (done) => {
+    expect(coinTicker()).to.be.an('array');
+    exchanges.forEach((exchange) => {
+      expect(coinTicker()).to.include(exchange);
+    })
+    done();
+  })
   exchanges.forEach((exchange) => {
     it(`Should return ${exchange} pairs and tickerData`, (done) => {
       coinTicker(exchange, 'pairs')
