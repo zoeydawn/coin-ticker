@@ -22,6 +22,7 @@ coinTicker([exchange, assetPair])
 ```
 
 **Get available exchanges:**
+
 The coinTicker function with no arguments will return an array of all available exchanges
 ```js
 coinTicker()
@@ -37,15 +38,16 @@ coinTicker()
 //   'poloniex',
 //   'bitcoinaverage',
 //   'gdax',
-//   'yunbi',
+//   'yunbi'
 // ]
 ```
 
 
 **Get available asset pairs by exchange:**
-Declare the exchange and use string 'pair' to request available asset pairs. coinTicker will return a promise.
+
+Declare the exchange and use string 'pairs' to request available asset pairs. coinTicker will return a promise.
 ```js
-coinTicker('poloniex', 'pair')
+coinTicker('poloniex', 'pairs')
   .then((pairs) => {
     console.log(pairs);
   })
@@ -76,6 +78,7 @@ coinTicker('poloniex', 'pair')
 ```
 
 **Get Ticker Data:**
+
 Simply declare the exchange and asset pair to get the latest market info. coinTicker will return a promise.
 ```js
 coinTicker('bitfinex', 'BTC_USD')
