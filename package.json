@@ -1,6 +1,6 @@
 {
   "name": "coin-ticker",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Wrapper for bitcoin exchange apis. The easiest way to add cryptocurrency market data into your application!",
   "main": "index.js",
   "directories": {
