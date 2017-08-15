@@ -14,6 +14,7 @@ const exchanges = [
   'poloniex',
   'bitcoinaverage',
   'gdax',
+  'surbtc',
   'yunbi',
 ];
 

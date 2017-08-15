@@ -8,6 +8,7 @@ const bittrex = require('./exchanges/bittrex');
 const poloniex = require('./exchanges/poloniex');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
 const gdax = require('./exchanges/gdax');
+const surbtc = require('./exchanges/surbtc');
 const yunbi = require('./exchanges/yunbi');
 
 module.exports = (exchange) => {
@@ -42,6 +43,9 @@ module.exports = (exchange) => {
       break;
     case 'gdax':
       return gdax();
+      break;
+    case 'surbtc':
+      return surbtc();
       break;
     case 'yunbi':
       return yunbi();
