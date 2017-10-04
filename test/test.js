@@ -15,7 +15,6 @@ const exchanges = [
   'bitcoinaverage',
   'gdax',
   'surbtc',
-  'yunbi',
 ];
 
 describe('coinTicker', function() {

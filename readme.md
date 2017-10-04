@@ -38,7 +38,6 @@ coinTicker()
 //   'poloniex',
 //   'bitcoinaverage',
 //   'gdax',
-//   'yunbi'
 // ]
 ```
 

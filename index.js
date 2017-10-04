@@ -8,7 +8,6 @@ const poloniex = require('./exchanges/poloniex');
 const coinbase = require('./exchanges/coinbase');
 const gdax = require('./exchanges/gdax');
 const surbtc = require('./exchanges/surbtc');
-const yunbi = require('./exchanges/yunbi');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
 const pairs = require('./pairs');
 
@@ -24,7 +23,6 @@ const availableExchanges = [
   'bitcoinaverage',
   'gdax',
   'surbtc',
-  'yunbi',
 ];
 
 module.exports = (exchange, currencyPair) => {
@@ -68,9 +66,6 @@ module.exports = (exchange, currencyPair) => {
       break;
     case 'surbtc':
       return surbtc(pair);
-      break;
-    case 'yunbi':
-      return yunbi(pair);
       break;
     case 'bitcoinaverage':
     case 'bitcoinAverage':
