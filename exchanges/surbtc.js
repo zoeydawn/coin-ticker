@@ -1,16 +1,15 @@
 const axios = require('axios');
 
 const headers = {
-  "Accept": "application/json",
-  "Content-Type": "application/json",
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
 };
 
 module.exports = (pair) => {
-  const currencyPair = pair.replace(/^(.+)_(.+)$/,'$2-$1').toLowerCase();
-
+  const currencyPair = pair.replace(/_/, '-').toLowerCase();
   return axios.get(`https://www.surbtc.com/api/v2/markets/${currencyPair}/ticker`, { headers })
     .then((res) => {
-      const data = res.data.ticker; 
+      const data = res.data.ticker;
       return {
         last: data.last_price[0].toString(),
         ask: data.min_ask[0].toString(),
@@ -25,4 +24,4 @@ module.exports = (pair) => {
       };
     })
     .catch(err => console.error('surbtc api error:', err));
-}
+};
