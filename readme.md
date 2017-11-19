@@ -7,7 +7,7 @@ Easily get the latest exchange data of Bitcoin, Etherium, Litecoin, and other as
 ## Install
 
 ```bash
-$ npm install --save coin-ticker
+$ npm install coin-ticker
 ```
 
 ## Usage
