@@ -1,21 +1,21 @@
 const axios = require('axios');
 
 module.exports = (pair) => {
-  return axios.get(`https://bleutrade.com/api/v2/public/getticker?market=${currencyPair}`)
+  return axios.get(`https://bleutrade.com/api/v2/public/getmarketsummary?market=${pair}`)
     .then((res) => {
       if (res.data.success === 'false') {
-        return 'invalid currency pair';
+        throw 'invalid currency pair';
       }
 
-      const { ask, bid, last_price, low, high, volume, timestamp, message } = res.data.result;
-
+      const { MarketCurrency,BaseCurrency,MarketName,PrevDay,High,Low,Last,Average,Volume,BaseVolume,TimeStamp,Bid,Ask, IsActive } = res.data.result;
+        
       return {
-        last: last_price,
-        ask,
-        bid,
-        low,
-        high,
-        vol: volume,
+        last: Last,
+        ask: Ask,
+        bid: Bid,
+        low: 'not provided',
+        high: 'not provided',
+        vol: 'not provided',
         timestamp,
         exchange: 'bleutrade',
         pair,
