@@ -7,22 +7,22 @@ module.exports = (pair) => {
         throw 'invalid currency pair';
       }
 
-      const { MarketCurrency,BaseCurrency,MarketName,PrevDay,High,Low,Last,Average,Volume,BaseVolume,TimeStamp,Bid,Ask, IsActive } = res.data.result;
+      const { MarketName, High, Low, Last, Volume, Bid, Ask } = res.data.result[0];
         
       return {
         last: Last,
         ask: Ask,
         bid: Bid,
-        low: 'not provided',
-        high: 'not provided',
-        vol: 'not provided',
-        timestamp,
+        low: Low,
+        high: High,
+        vol: Volume,
+        timestamp: Date.now() / 1000,
         exchange: 'bleutrade',
-        pair,
-        rawData: res.data,
+        pair: MarketName,
+        rawData: res.data.result
       };
     })
     .catch((err) => {
-      return 'invalid currency pair';
+      return err;
     });
 }

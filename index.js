@@ -9,6 +9,7 @@ const coinbase = require('./exchanges/coinbase');
 const gdax = require('./exchanges/gdax');
 const surbtc = require('./exchanges/surbtc');
 const bitcoinaverage = require('./exchanges/bitcoinaverage');
+const bleutrade = require('./exchanges/bleutrade');
 const pairs = require('./pairs');
 
 const availableExchanges = [
@@ -23,6 +24,7 @@ const availableExchanges = [
   'bitcoinaverage',
   'gdax',
   'surbtc',
+  'bleutrade',
 ];
 
 module.exports = (exchange, currencyPair) => {
@@ -71,9 +73,12 @@ module.exports = (exchange, currencyPair) => {
     case 'bitcoinAverage':
       return bitcoinaverage(pair);
       break;
+    case 'bleutrade':
+      return bleutrade();
+      break;
     default:
-      // console.error(`Unrecognized exchange: "${exchange}"`);
-      // return 'Unrecognized exchange';
+      console.error(`Unrecognized exchange: "${exchange}"`);
+      return 'Unrecognized exchange';
       return availableExchanges;
   }
 }

@@ -5,6 +5,7 @@ const coinTicker = require('../index.js');
 
 const exchanges = [
   'bitfinex',
+  'bleutrade',
   'coinbase',
   'bitstamp',
   'kraken',
