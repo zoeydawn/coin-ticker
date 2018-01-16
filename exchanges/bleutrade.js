@@ -19,7 +19,7 @@ module.exports = (pair) => {
         timestamp: Date.now() / 1000,
         exchange: 'bleutrade',
         pair: MarketName,
-        rawData: res.data.result
+        rawData: res.data.result[0]
       };
     })
     .catch((err) => {

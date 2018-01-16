@@ -77,8 +77,8 @@ module.exports = (exchange, currencyPair) => {
       return bleutrade();
       break;
     default:
-      console.error(`Unrecognized exchange: "${exchange}"`);
-      return 'Unrecognized exchange';
+      // console.error(`Unrecognized exchange: "${exchange}"`);
+      // return 'Unrecognized exchange';
       return availableExchanges;
   }
 }
