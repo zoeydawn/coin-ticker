@@ -19,7 +19,7 @@ const exchanges = [
 ];
 
 describe('coinTicker', function() {
-  this.timeout(15000);
+  this.timeout(60000);
   it('Should return array of all available exchanges', (done) => {
     expect(coinTicker()).to.be.an('array');
     exchanges.forEach((exchange) => {
