@@ -74,7 +74,7 @@ module.exports = (exchange, currencyPair) => {
       return bitcoinaverage(pair);
       break;
     case 'bleutrade':
-      return bleutrade();
+      return bleutrade(pair);
       break;
     default:
       // console.error(`Unrecognized exchange: "${exchange}"`);
