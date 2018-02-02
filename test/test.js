@@ -4,6 +4,7 @@ const { expect } = chai;
 const coinTicker = require('../index.js');
 
 const exchanges = [
+  'binance',
   'bitfinex',
   'bleutrade',
   'coinbase',

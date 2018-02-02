@@ -1,3 +1,4 @@
+const binance = require('./exchanges/binance');
 const bitfinex = require('./exchanges/bitfinex');
 const coinbase = require('./exchanges/coinbase');
 const bitstamp = require('./exchanges/bitstamp');
@@ -13,6 +14,9 @@ const bleutrade = require('./exchanges/bleutrade');
 
 module.exports = (exchange) => {
   switch (exchange) {
+    case 'binance':
+      return binance();
+      break;
     case 'bitfinex':
       return bitfinex();
       break;
